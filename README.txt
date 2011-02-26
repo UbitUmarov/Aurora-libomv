@@ -1,3 +1,9 @@
+This is a fork from openmetaverse project acordind to it's license terms
+Original project can be found at http://www.openmetaverse.org/
+
+See LICENCE.txt for license terms
+UbitUmarov
+
 libOpenMetaverse Library Quick Start
 
 
