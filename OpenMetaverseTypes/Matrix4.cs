@@ -395,26 +395,41 @@ namespace OpenMetaverse
             float xx = quaternion.X * quaternion.X;
             float yy = quaternion.Y * quaternion.Y;
             float zz = quaternion.Z * quaternion.Z;
-            float xy = quaternion.X * quaternion.Y;
-            float zw = quaternion.Z * quaternion.W;
-            float zx = quaternion.Z * quaternion.X;
-            float yw = quaternion.Y * quaternion.W;
-            float yz = quaternion.Y * quaternion.Z;
-            float xw = quaternion.X * quaternion.W;
+            float ww = quaternion.Z * quaternion.Z;
+            float twoX = 2.0f * quaternion.X;
+            float twoY = 2.0f * quaternion.Y;
+            float twoW = 2.0f * quaternion.W;
+            float wx = twoW * quaternion.X;
+            float xy = twoX * quaternion.Y;
+            float wy = twoW * quaternion.Y;
+            float xz = twoX * quaternion.Z;
+            float yz = twoY * quaternion.Z;
+            float wz = twoW * quaternion.Z;
 
-            matrix.M11 = 1f - (2f * (yy + zz));
-            matrix.M12 = 2f * (xy + zw);
-            matrix.M13 = 2f * (zx - yw);
+
+            // kept sum and dif conventions on off diagonal elements, oposite to others
+            matrix.M11 = ww + xx - yy - zz;
+            matrix.M12 = xy + wz;
+            matrix.M13 = xz - wy;
+            // matrix.M11 = 1f - (2f * (yy + zz));
+            // matrix.M12 = 2f * (xy + zw); // this should be -
+            // matrix.M13 = 2f * (zx - yw); // this should be +
             matrix.M14 = 0f;
 
-            matrix.M21 = 2f * (xy - zw);
-            matrix.M22 = 1f - (2f * (zz + xx));
-            matrix.M23 = 2f * (yz + xw);
+            matrix.M21 = xy - wz;
+            matrix.M22 = ww - xx + yy - zz;
+            matrix.M23 = yz + wx;
+            //matrix.M21 = 2f * (xy - zw);
+            //matrix.M22 = 1f - (2f * (zz + xx));
+            //matrix.M23 = 2f * (yz + xw);
             matrix.M24 = 0f;
 
-            matrix.M31 = 2f * (zx + yw);
-            matrix.M32 = 2f * (yz - xw);
-            matrix.M33 = 1f - (2f * (yy + xx));
+            matrix.M31 = xz + wy;
+            matrix.M32 = yz - wx;
+            matrix.M33 = ww - xx - yy + zz;
+            //matrix.M31 = 2f * (zx + yw);
+            //matrix.M32 = 2f * (yz - xw);
+            //matrix.M33 = 1f - (2f * (yy + xx));
             matrix.M34 = 0f;
 
             matrix.M41 = matrix.M42 = matrix.M43 = 0f;

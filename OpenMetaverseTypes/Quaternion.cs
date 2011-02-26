@@ -261,30 +261,35 @@ namespace OpenMetaverse
             pitch = 0f;
             yaw = 0f;
 
-            Quaternion t = new Quaternion(this.X * this.X, this.Y * this.Y, this.Z * this.Z, this.W * this.W);
+            float XX = this.X * this.X;
+            float YY = this.Y * this.Y;
+            float ZZ = this.Z * this.Z;
+            float WW = this.W * this.W;
 
-            float m = (t.X + t.Y + t.Z + t.W);
+            float m = (XX + YY + ZZ + WW);
+
             if (Math.Abs(m) < 0.001d) return;
+
             float n = 2 * (this.Y * this.W + this.X * this.Z);
             float p = m * m - n * n;
 
             if (p > 0f)
             {
-                roll = (float)Math.Atan2(2.0f * (this.X * this.W - this.Y * this.Z), (-t.X - t.Y + t.Z + t.W));
+                roll = (float)Math.Atan2(2.0f * (this.X * this.W - this.Y * this.Z), (-XX - YY + ZZ + WW));
                 pitch = (float)Math.Atan2(n, Math.Sqrt(p));
-                yaw = (float)Math.Atan2(2.0f * (this.Z * this.W - this.X * this.Y), t.X - t.Y - t.Z + t.W);
+                yaw = (float)Math.Atan2(2.0f * (this.Z * this.W - this.X * this.Y), XX - YY - ZZ + WW);
             }
             else if (n > 0f)
             {
                 roll = 0f;
-                pitch = (float)(Math.PI / 2d);
-                yaw = (float)Math.Atan2((this.Z * this.W + this.X * this.Y), 0.5f - t.X - t.Y);
+                pitch = 1.5707963267948966192313216916398f;//pi/2
+                yaw = (float)Math.Atan2((this.Z * this.W + this.X * this.Y), 0.5f - XX - YY);
             }
             else
             {
                 roll = 0f;
-                pitch = -(float)(Math.PI / 2d);
-                yaw = (float)Math.Atan2((this.Z * this.W + this.X * this.Y), 0.5f - t.X - t.Z);
+                pitch = -1.5707963267948966192313216916398f; 
+                yaw = (float)Math.Atan2((this.Z * this.W + this.X * this.Y), 0.5f - XX - ZZ);
             }
 
             //float sqx = X * X;
@@ -427,19 +432,23 @@ namespace OpenMetaverse
             if (roll > Utils.TWO_PI || pitch > Utils.TWO_PI || yaw > Utils.TWO_PI)
                 throw new ArgumentException("Euler angles must be in radians");
 
-            double atCos = Math.Cos(roll / 2f);
-            double atSin = Math.Sin(roll / 2f);
-            double leftCos = Math.Cos(pitch / 2f);
-            double leftSin = Math.Sin(pitch / 2f);
-            double upCos = Math.Cos(yaw / 2f);
-            double upSin = Math.Sin(yaw / 2f);
-            double atLeftCos = atCos * leftCos;
-            double atLeftSin = atSin * leftSin;
+            double c1c2 = roll * 0.5f;
+
+            double c1 = Math.Cos(c1c2);
+            double s1 = Math.Sin(c1c2);
+            c1c2 = pitch * 0.5f;
+            double c2 = Math.Cos(c1c2);
+            double s2 = Math.Sin(c1c2);
+            c1c2 = yaw * 0.5f;
+            double c3 = Math.Cos(c1c2);
+            double s3 = Math.Sin(c1c2);
+            c1c2 = c1 * c2;
+            double s1s2 = s1 * s2;
             return new Quaternion(
-                (float)(atSin * leftCos * upCos + atCos * leftSin * upSin),
-                (float)(atCos * leftSin * upCos - atSin * leftCos * upSin),
-                (float)(atLeftCos * upSin + atLeftSin * upCos),
-                (float)(atLeftCos * upCos - atLeftSin * upSin)
+                (float)(s1 * c2 * c3 + c1 * s2 * s3),
+                (float)(c1 * s2 * c3 - s1 * c2 * s3),
+                (float)(c1c2 * s3 + s1s2 * c3),
+                (float)(c1c2 * c3 - s1s2 * s3)
             );
         }
 
@@ -492,25 +501,45 @@ namespace OpenMetaverse
             return quat;
         }
 
-        public static Quaternion Divide(Quaternion quaternion1, Quaternion quaternion2)
+        public static Quaternion Divide(Quaternion a, Quaternion c)
         {
-            float x = quaternion1.X;
-            float y = quaternion1.Y;
-            float z = quaternion1.Z;
-            float w = quaternion1.W;
+            Quaternion b;
 
-            float q2lensq = quaternion2.LengthSquared();
-            float ooq2lensq = 1f / q2lensq;
-            float x2 = -quaternion2.X * ooq2lensq;
-            float y2 = -quaternion2.Y * ooq2lensq;
-            float z2 = -quaternion2.Z * ooq2lensq;
-            float w2 = quaternion2.W * ooq2lensq;
+            float clensq = c.LengthSquared();
+            if (clensq == 0)
+                b.X = b.Y = b.Z = b.W = 0f;
+            else
+                {
+                clensq = -1f / clensq;
+                b.X = c.X * clensq;
+                b.Y = c.Y * clensq;
+                b.Z = c.Z * clensq;
+                b.W = -c.W * clensq;
 
+                float t0 = (a.Z - a.Y) * (b.Y - b.Z);
+                float t1 = (a.W + a.X) * (b.W + b.X);
+                float t2 = (a.W - a.X) * (b.Y + b.Z);
+                float t3 = (a.Z + a.Y) * (b.W - b.X);
+                float t4 = (a.Z - a.X) * (b.X - b.Y);
+                float t5 = (a.Z + a.X) * (b.X + b.Y);
+                float t6 = (a.W + a.Y) * (b.W - b.Z);
+                float t7 = (a.W - a.Y) * (b.W + b.Z);
+                float t8 = t5 + t6 + t7;
+                float t9 = 0.5f * (t4 + t8);
+
+                b.W = t0 + t9 - t5;
+                b.X = t1 + t9 - t8;
+                b.Y = t2 + t9 - t7;
+                b.Z = t3 + t9 - t6;
+                }
+            return b;
+/*
             return new Quaternion(
                 ((x * w2) + (x2 * w)) + (y * z2) - (z * y2),
                 ((y * w2) + (y2 * w)) + (z * x2) - (x * z2),
                 ((z * w2) + (z2 * w)) + (x * y2) - (y * x2),
                 (w * w2) - ((x * x2) + (y * y2)) + (z * z2));
+ */
         }
 
         public static float Dot(Quaternion q1, Quaternion q2)
@@ -531,13 +560,12 @@ namespace OpenMetaverse
             }
             else
             {
-                float oonorm = 1f / norm;
-                quaternion = Conjugate(quaternion);
-                
+                float oonorm = - 1f / norm;
+                                
                 quaternion.X *= oonorm;
                 quaternion.Y *= oonorm;
                 quaternion.Z *= oonorm;
-                quaternion.W *= oonorm;
+                quaternion.W *= -oonorm;
             }
 
             return quaternion;
@@ -600,14 +628,35 @@ namespace OpenMetaverse
         }
 
         public static Quaternion Multiply(Quaternion a, Quaternion b)
-        {
+            {
+            float t0 = (a.Z - a.Y) * (b.Y - b.Z);
+            float t1 = (a.W + a.X) * (b.W + b.X);
+            float t2 = (a.W - a.X) * (b.Y + b.Z);
+            float t3 = (a.Z + a.Y) * (b.W - b.X);
+            float t4 = (a.Z - a.X) * (b.X - b.Y);
+            float t5 = (a.Z + a.X) * (b.X + b.Y);
+            float t6 = (a.W + a.Y) * (b.W - b.Z);
+            float t7 = (a.W - a.Y) * (b.W + b.Z);
+            float t8 = t5 + t6 + t7;
+            float t9 = 0.5f * (t4 + t8);
+
+            Quaternion q;
+
+            q.W = t0+t9-t5;
+            q.X = t1+t9-t8;
+            q.Y = t2+t9-t7;
+            q.Z = t3+t9-t6;
+
+            return q;
+/*
             return new Quaternion(
                 a.W * b.X + a.X * b.W + a.Y * b.Z - a.Z * b.Y,
                 a.W * b.Y + a.Y * b.W + a.Z * b.X - a.X * b.Z,
                 a.W * b.Z + a.Z * b.W + a.X * b.Y - a.Y * b.X,
                 a.W * b.W - a.X * b.X - a.Y * b.Y - a.Z * b.Z
             );
-        }
+*/
+            }
 
         public static Quaternion Multiply(Quaternion quaternion, float scaleFactor)
         {

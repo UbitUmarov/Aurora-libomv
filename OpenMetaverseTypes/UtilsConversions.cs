@@ -375,35 +375,35 @@ namespace OpenMetaverse
         public static byte[] Int16ToBytes(short value)
         {
             byte[] bytes = new byte[2];
-            bytes[0] = (byte)(value % 256);
-            bytes[1] = (byte)((value >> 8) % 256);
+            bytes[0] = (byte)(value);
+            bytes[1] = (byte)((value >> 8));
             return bytes;
         }
 
         public static void Int16ToBytes(short value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)(value % 256);
-            dest[pos + 1] = (byte)((value >> 8) % 256);
+            dest[pos] = (byte)(value);
+            dest[pos + 1] = (byte)((value >> 8));
         }
 
         public static byte[] UInt16ToBytes(ushort value)
         {
             byte[] bytes = new byte[2];
-            bytes[0] = (byte)(value % 256);
-            bytes[1] = (byte)((value >> 8) % 256);
+            bytes[0] = (byte)(value);
+            bytes[1] = (byte)((value >> 8));
             return bytes;
         }
 
         public static void UInt16ToBytes(ushort value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)(value % 256);
-            dest[pos + 1] = (byte)((value >> 8) % 256);
+            dest[pos] = (byte)(value);
+            dest[pos + 1] = (byte)((value >> 8));
         }
 
         public static void UInt16ToBytesBig(ushort value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)((value >> 8) % 256);
-            dest[pos + 1] = (byte)(value % 256);
+            dest[pos] = (byte)((value >> 8));
+            dest[pos + 1] = (byte)(value);
         }
 
         /// <summary>
@@ -415,10 +415,10 @@ namespace OpenMetaverse
         {
             byte[] bytes = new byte[4];
 
-            bytes[0] = (byte)(value % 256);
-            bytes[1] = (byte)((value >> 8) % 256);
-            bytes[2] = (byte)((value >> 16) % 256);
-            bytes[3] = (byte)((value >> 24) % 256);
+            bytes[0] = (byte)(value);
+            bytes[1] = (byte)((value >> 8));
+            bytes[2] = (byte)((value >> 16));
+            bytes[3] = (byte)((value >> 24));
 
             return bytes;
         }
@@ -432,46 +432,46 @@ namespace OpenMetaverse
         {
             byte[] bytes = new byte[4];
 
-            bytes[0] = (byte)((value >> 24) % 256);
-            bytes[1] = (byte)((value >> 16) % 256);
-            bytes[2] = (byte)((value >> 8) % 256);
-            bytes[3] = (byte)(value % 256);
+            bytes[0] = (byte)((value >> 24));
+            bytes[1] = (byte)((value >> 16));
+            bytes[2] = (byte)((value >> 8));
+            bytes[3] = (byte)(value);
 
             return bytes;
         }
 
         public static void IntToBytes(int value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)(value % 256);
-            dest[pos + 1] = (byte)((value >> 8) % 256);
-            dest[pos + 2] = (byte)((value >> 16) % 256);
-            dest[pos + 3] = (byte)((value >> 24) % 256);
+            dest[pos] = (byte)(value);
+            dest[pos + 1] = (byte)((value >> 8));
+            dest[pos + 2] = (byte)((value >> 16));
+            dest[pos + 3] = (byte)((value >> 24));
         }
 
         public static byte[] UIntToBytes(uint value)
         {
             byte[] bytes = new byte[4];
-            bytes[0] = (byte)(value % 256);
-            bytes[1] = (byte)((value >> 8) % 256);
-            bytes[2] = (byte)((value >> 16) % 256);
-            bytes[3] = (byte)((value >> 24) % 256);
+            bytes[0] = (byte)(value);
+            bytes[1] = (byte)((value >> 8));
+            bytes[2] = (byte)((value >> 16));
+            bytes[3] = (byte)((value >> 24));
             return bytes;
         }
 
         public static void UIntToBytes(uint value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)(value % 256);
-            dest[pos + 1] = (byte)((value >> 8) % 256);
-            dest[pos + 2] = (byte)((value >> 16) % 256);
-            dest[pos + 3] = (byte)((value >> 24) % 256);
+            dest[pos] = (byte)(value);
+            dest[pos + 1] = (byte)((value >> 8));
+            dest[pos + 2] = (byte)((value >> 16));
+            dest[pos + 3] = (byte)((value >> 24));
         }
 
         public static void UIntToBytesBig(uint value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)((value >> 24) % 256);
-            dest[pos + 1] = (byte)((value >> 16) % 256);
-            dest[pos + 2] = (byte)((value >> 8) % 256);
-            dest[pos + 3] = (byte)(value % 256);
+            dest[pos] = (byte)((value >> 24));
+            dest[pos + 1] = (byte)((value >> 16));
+            dest[pos + 2] = (byte)((value >> 8));
+            dest[pos + 3] = (byte)(value);
         }
 
         /// <summary>
