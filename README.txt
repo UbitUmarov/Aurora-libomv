@@ -1,6 +1,6 @@
 This is a fork from openmetaverse project acordind to it's license terms
 Its targeted mainly for Aurora simulator (http://www.aurora-sim.org/) and similar applications
-It may not compatible with openmetaverse libomv and will be only a subset of it.
+It may not be compatible with openmetaverse libomv and will be only a subset of it.
 For other purposes consider using the original libomv. See http://www.openmetaverse.org/
 
 See LICENCE.txt for license terms
