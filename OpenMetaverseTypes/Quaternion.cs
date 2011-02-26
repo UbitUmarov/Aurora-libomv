@@ -31,16 +31,20 @@ using System.Globalization;
 namespace OpenMetaverse
 {
     [Serializable]
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Explicit)]
     public struct Quaternion : IEquatable<Quaternion>
     {
         /// <summary>X value</summary>
+        [FieldOffset(0)]
         public float X;
         /// <summary>Y value</summary>
+        [FieldOffset(sizeof(float))]
         public float Y;
         /// <summary>Z value</summary>
+        [FieldOffset(2*sizeof(float))] 
         public float Z;
         /// <summary>W value</summary>
+        [FieldOffset(3*sizeof(float))] 
         public float W;
 
         #region Constructors

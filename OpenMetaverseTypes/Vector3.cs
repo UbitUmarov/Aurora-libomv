@@ -34,16 +34,19 @@ namespace OpenMetaverse
     /// A three-dimensional vector with floating-point values
     /// </summary>
     [Serializable]
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Explicit)]
     public struct Vector3 : IComparable<Vector3>, IEquatable<Vector3>
     {
       
         /// <summary>X value</summary>
-        public float X;
+        [FieldOffset(0)]
+            public float X;
         /// <summary>Y value</summary>
-        public float Y;
+        [FieldOffset(sizeof(float))]
+            public float Y;
         /// <summary>Z value</summary>
-        public float Z;
+        [FieldOffset(2*sizeof(float))]
+            public float Z;
 
         #region Constructors
 
@@ -532,7 +535,6 @@ namespace OpenMetaverse
 
         public static Vector3 operator *(Vector3 vec, Quaternion rot)
         {
-
         float rw = -rot.X * vec.X - rot.Y * vec.Y - rot.Z * vec.Z;
         float rx = rot.W * vec.X + rot.Y * vec.Z - rot.Z * vec.Y;
         float ry = rot.W * vec.Y + rot.Z * vec.X - rot.X * vec.Z;
@@ -542,7 +544,6 @@ namespace OpenMetaverse
         vec.Y = -rw * rot.Y + ry * rot.W - rz * rot.X + rx * rot.Z;
         vec.Z = -rw * rot.Z + rz * rot.W - rx * rot.Y + ry * rot.X;
         return vec;
-
         }
 
         public static Vector3 operator *(Vector3 vector, Matrix4 matrix)
