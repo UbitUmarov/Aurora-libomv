@@ -1,70 +1,0 @@
-9
-
-dir
-3478
-https://libopenmetaverse.googlecode.com/svn/libopenmetaverse/trunk/Programs/examples/TestClient/Commands
-https://libopenmetaverse.googlecode.com/svn
-
-
-
-2010-08-13T22:49:13.618078Z
-3420
-jhurliman@jhurliman.org
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-52acb1d6-8a22-11de-b505-999d5b087335
-
-Appearance
-dir
-
-Groups
-dir
-
-Directory
-dir
-
-System
-dir
-
-Voice
-dir
-
-Communication
-dir
-
-Estate
-dir
-
-Prims
-dir
-
-Friends
-dir
-
-Movement
-dir
-
-Inventory
-dir
-
-Agent
-dir
-
-Land
-dir
-
-Stats
-dir
-
