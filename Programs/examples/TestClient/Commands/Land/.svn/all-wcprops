@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3298/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Land
+END
+ParcelPrimOwnersCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/3151/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Land/ParcelPrimOwnersCommand.cs
+END
+ParcelDetailsCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/3151/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Land/ParcelDetailsCommand.cs
+END
+ParcelSelectObjectsCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/3151/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Land/ParcelSelectObjectsCommand.cs
+END
+WindCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/3298/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Land/WindCommand.cs
+END
+GridLayerCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/3155/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Land/GridLayerCommand.cs
+END
+ParcelInfoCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/3182/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Land/ParcelInfoCommand.cs
+END
+GridMapCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/2320/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Land/GridMapCommand.cs
+END
+FindSimCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/2320/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Land/FindSimCommand.cs
+END
+AgentLocationsCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/3156/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Land/AgentLocationsCommand.cs
+END

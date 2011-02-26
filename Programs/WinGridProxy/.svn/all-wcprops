@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/3244/libopenmetaverse/trunk/Programs/WinGridProxy
+END
+FormPluginManager.Designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/2705/libopenmetaverse/trunk/Programs/WinGridProxy/FormPluginManager.Designer.cs
+END
+ProxyManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/3224/libopenmetaverse/trunk/Programs/WinGridProxy/ProxyManager.cs
+END
+SettingsStore.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/3205/libopenmetaverse/trunk/Programs/WinGridProxy/SettingsStore.cs
+END
+FormPluginManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/2705/libopenmetaverse/trunk/Programs/WinGridProxy/FormPluginManager.cs
+END
+AboutBox1.resx
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/3074/libopenmetaverse/trunk/Programs/WinGridProxy/AboutBox1.resx
+END
+FormWinGridProxy.Designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/3224/libopenmetaverse/trunk/Programs/WinGridProxy/FormWinGridProxy.Designer.cs
+END
+FormPluginManager.resx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/2705/libopenmetaverse/trunk/Programs/WinGridProxy/FormPluginManager.resx
+END
+FormWinGridProxy.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/3244/libopenmetaverse/trunk/Programs/WinGridProxy/FormWinGridProxy.cs
+END
+FormSessionSearch.Designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/2646/libopenmetaverse/trunk/Programs/WinGridProxy/FormSessionSearch.Designer.cs
+END
+FormSessionSearch.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/2646/libopenmetaverse/trunk/Programs/WinGridProxy/FormSessionSearch.cs
+END
+ListViewNoFlicker.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3224/libopenmetaverse/trunk/Programs/WinGridProxy/ListViewNoFlicker.cs
+END
+AboutBox1.Designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3224/libopenmetaverse/trunk/Programs/WinGridProxy/AboutBox1.Designer.cs
+END
+AboutBox1.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3224/libopenmetaverse/trunk/Programs/WinGridProxy/AboutBox1.cs
+END
+FormWinGridProxy.resx
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3224/libopenmetaverse/trunk/Programs/WinGridProxy/FormWinGridProxy.resx
+END
+FireEventAppender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/2805/libopenmetaverse/trunk/Programs/WinGridProxy/FireEventAppender.cs
+END
+Program.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/2646/libopenmetaverse/trunk/Programs/WinGridProxy/Program.cs
+END
+SessionTypes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/3224/libopenmetaverse/trunk/Programs/WinGridProxy/SessionTypes.cs
+END
+FormSessionSearch.resx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/2630/libopenmetaverse/trunk/Programs/WinGridProxy/FormSessionSearch.resx
+END

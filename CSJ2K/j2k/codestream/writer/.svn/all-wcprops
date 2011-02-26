@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/codestream/writer
+END
+TagTreeEncoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/codestream/writer/TagTreeEncoder.cs
+END
+PktEncoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/codestream/writer/PktEncoder.cs
+END
+FileCodestreamWriter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/codestream/writer/FileCodestreamWriter.cs
+END
+CodestreamWriter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/codestream/writer/CodestreamWriter.cs
+END
+HeaderEncoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/codestream/writer/HeaderEncoder.cs
+END
+BitOutputBuffer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/codestream/writer/BitOutputBuffer.cs
+END

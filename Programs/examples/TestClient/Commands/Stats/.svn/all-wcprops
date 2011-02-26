@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3152/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Stats
+END
+StatsCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/2320/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Stats/StatsCommand.cs
+END
+RegionInfoCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/2739/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Stats/RegionInfoCommand.cs
+END
+UptimeCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/2320/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Stats/UptimeCommand.cs
+END
+DilationCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/2320/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Stats/DilationCommand.cs
+END
+NetstatsCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/3152/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Stats/NetstatsCommand.cs
+END

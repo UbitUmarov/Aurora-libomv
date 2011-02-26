@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/3194/libopenmetaverse/trunk/Programs/mapgenerator
+END
+template.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/3129/libopenmetaverse/trunk/Programs/mapgenerator/template.cs
+END
+ProtocolManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/2320/libopenmetaverse/trunk/Programs/mapgenerator/ProtocolManager.cs
+END
+mapgenerator.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/3194/libopenmetaverse/trunk/Programs/mapgenerator/mapgenerator.cs
+END
+unusedpackets.txt
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3142/libopenmetaverse/trunk/Programs/mapgenerator/unusedpackets.txt
+END

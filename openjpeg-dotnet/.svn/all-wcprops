@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/3345/libopenmetaverse/trunk/openjpeg-dotnet
+END
+license.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2320/libopenmetaverse/trunk/openjpeg-dotnet/license.txt
+END
+Makefile.osx
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2358/libopenmetaverse/trunk/openjpeg-dotnet/Makefile.osx
+END
+DllOpenJPEG.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3107/libopenmetaverse/trunk/openjpeg-dotnet/DllOpenJPEG.vcproj
+END
+OpenJPEG.rc
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/3099/libopenmetaverse/trunk/openjpeg-dotnet/OpenJPEG.rc
+END
+Resource.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2320/libopenmetaverse/trunk/openjpeg-dotnet/Resource.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/3345/libopenmetaverse/trunk/openjpeg-dotnet/Makefile
+END
+DllOpenJPEG.sln
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3106/libopenmetaverse/trunk/openjpeg-dotnet/DllOpenJPEG.sln
+END

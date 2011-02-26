@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/3286/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory
+END
+EmptyLostAndFound.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/2546/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/EmptyLostAndFound.cs
+END
+CreateNotecardCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/3187/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/CreateNotecardCommand.cs
+END
+GiveAllCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/2320/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/GiveAllCommand.cs
+END
+ObjectInventoryCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/2320/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/ObjectInventoryCommand.cs
+END
+BalanceCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/3145/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/BalanceCommand.cs
+END
+UploadImageCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/2680/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/UploadImageCommand.cs
+END
+ListContentsCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/2320/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/ListContentsCommand.cs
+END
+ViewNotecardCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/3004/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/ViewNotecardCommand.cs
+END
+InventoryCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/2320/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/InventoryCommand.cs
+END
+DeleteFolderCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/3038/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/DeleteFolderCommand.cs
+END
+TreeCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/2825/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/TreeCommand.cs
+END
+DumpOutfitCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/3038/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/DumpOutfitCommand.cs
+END
+EmptyTrashCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/2546/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/EmptyTrashCommand.cs
+END
+TaskRunningCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/3187/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/TaskRunningCommand.cs
+END
+ScriptCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/2825/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/ScriptCommand.cs
+END
+XferCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/3286/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/XferCommand.cs
+END
+BackupCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/3004/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/BackupCommand.cs
+END
+DownloadCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/3004/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/DownloadCommand.cs
+END
+UploadScriptCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/3262/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/UploadScriptCommand.cs
+END
+GiveItemCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/3151/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/GiveItemCommand.cs
+END
+ChangeDirectoryCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/2713/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Inventory/ChangeDirectoryCommand.cs
+END

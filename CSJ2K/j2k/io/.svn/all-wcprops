@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/io
+END
+BEBufferedRandomAccessFile.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/io/BEBufferedRandomAccessFile.cs
+END
+BinaryDataInput.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/io/BinaryDataInput.cs
+END
+BinaryDataOutput.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/io/BinaryDataOutput.cs
+END
+EndianType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/io/EndianType.cs
+END
+BufferedRandomAccessFile.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/io/BufferedRandomAccessFile.cs
+END
+RandomAccessIO.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/io/RandomAccessIO.cs
+END

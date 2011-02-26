@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/2399/libopenmetaverse/trunk/Programs/Prebuild/src/Core/Attributes
+END
+OptionNodeAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/2399/libopenmetaverse/trunk/Programs/Prebuild/src/Core/Attributes/OptionNodeAttribute.cs
+END
+DataNodeAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/2399/libopenmetaverse/trunk/Programs/Prebuild/src/Core/Attributes/DataNodeAttribute.cs
+END
+TargetAttribute.cs
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/2399/libopenmetaverse/trunk/Programs/Prebuild/src/Core/Attributes/TargetAttribute.cs
+END

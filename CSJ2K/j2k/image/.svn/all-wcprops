@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/image
+END
+DataBlkInt.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/image/DataBlkInt.cs
+END
+ImgDataJoiner.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/image/ImgDataJoiner.cs
+END
+ImgDataConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/image/ImgDataConverter.cs
+END
+Tiler.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/image/Tiler.cs
+END
+DataBlk.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/image/DataBlk.cs
+END
+ImgData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/image/ImgData.cs
+END
+Coord.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/image/Coord.cs
+END
+BlkImgDataSrc.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/image/BlkImgDataSrc.cs
+END
+ImgDataAdapter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/image/ImgDataAdapter.cs
+END
+CompTransfSpec.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/image/CompTransfSpec.cs
+END
+DataBlkFloat.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/image/DataBlkFloat.cs
+END

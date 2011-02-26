@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/entropy/decoder
+END
+ByteInputBuffer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/entropy/decoder/ByteInputBuffer.cs
+END
+StdEntropyDecoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/entropy/decoder/StdEntropyDecoder.cs
+END
+DecLyrdCBlk.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/entropy/decoder/DecLyrdCBlk.cs
+END
+MQDecoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/entropy/decoder/MQDecoder.cs
+END
+ByteToBitInput.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/entropy/decoder/ByteToBitInput.cs
+END
+EntropyDecoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/entropy/decoder/EntropyDecoder.cs
+END
+CodedCBlkDataSrcDec.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/entropy/decoder/CodedCBlkDataSrcDec.cs
+END

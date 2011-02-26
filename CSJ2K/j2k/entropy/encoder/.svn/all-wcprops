@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder
+END
+LayersInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/LayersInfo.cs
+END
+EntropyCoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/EntropyCoder.cs
+END
+ByteOutputBuffer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/ByteOutputBuffer.cs
+END
+PostCompRateAllocator.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/3119/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/PostCompRateAllocator.cs
+END
+CodedCBlkDataSrcEnc.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/CodedCBlkDataSrcEnc.cs
+END
+BitToByteOutput.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/BitToByteOutput.cs
+END
+StdEntropyCoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/StdEntropyCoder.cs
+END
+EBCOTRateAllocator.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/EBCOTRateAllocator.cs
+END
+EBCOTLayer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/EBCOTLayer.cs
+END
+CBlkRateDistStats.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/CBlkRateDistStats.cs
+END
+MQCoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/entropy/encoder/MQCoder.cs
+END

@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/util
+END
+ProgressWatch.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/util/ProgressWatch.cs
+END
+ArrayUtil.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/util/ArrayUtil.cs
+END
+ParameterList.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/util/ParameterList.cs
+END
+StringFormatException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/util/StringFormatException.cs
+END
+FacilityManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/util/FacilityManager.cs
+END
+ThreadPool.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3119/libopenmetaverse/trunk/CSJ2K/j2k/util/ThreadPool.cs
+END
+StreamMsgLogger.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/util/StreamMsgLogger.cs
+END
+CodestreamManipulator.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/util/CodestreamManipulator.cs
+END
+MsgLogger.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/util/MsgLogger.cs
+END
+ISRandomAccessIO.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/util/ISRandomAccessIO.cs
+END
+MathUtil.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/util/MathUtil.cs
+END
+MsgPrinter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/util/MsgPrinter.cs
+END

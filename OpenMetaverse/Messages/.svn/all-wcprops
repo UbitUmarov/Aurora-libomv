@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/3468/libopenmetaverse/trunk/OpenMetaverse/Messages
+END
+MessageEventDecoder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/3468/libopenmetaverse/trunk/OpenMetaverse/Messages/MessageEventDecoder.cs
+END
+LindenMessages.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/3468/libopenmetaverse/trunk/OpenMetaverse/Messages/LindenMessages.cs
+END
+Messages.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/2900/libopenmetaverse/trunk/OpenMetaverse/Messages/Messages.cs
+END

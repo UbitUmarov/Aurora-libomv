@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3475/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes
+END
+AssetMesh.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3450/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetMesh.cs
+END
+AssetGesture.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetGesture.cs
+END
+AssetNotecard.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetNotecard.cs
+END
+AssetAnimation.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetAnimation.cs
+END
+AssetTexture.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetTexture.cs
+END
+AssetWearable.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetWearable.cs
+END
+AssetBodypart.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetBodypart.cs
+END
+AssetClothing.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetClothing.cs
+END
+AssetPrim.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetPrim.cs
+END
+AssetSound.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetSound.cs
+END
+AssetScriptBinary.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetScriptBinary.cs
+END
+AssetLandmark.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3475/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetLandmark.cs
+END
+AssetScriptText.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/3408/libopenmetaverse/trunk/OpenMetaverse/Assets/AssetTypes/AssetScriptText.cs
+END

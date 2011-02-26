@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3182/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Groups
+END
+JoinGroupCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/3162/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Groups/JoinGroupCommand.cs
+END
+ActivateGroupCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/3182/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Groups/ActivateGroupCommand.cs
+END
+GroupsCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/2989/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Groups/GroupsCommand.cs
+END
+GroupRolesCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/3162/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Groups/GroupRolesCommand.cs
+END
+GroupMembersCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/3162/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Groups/GroupMembersCommand.cs
+END
+LeaveGroupCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/3162/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Groups/LeaveGroupCommand.cs
+END
+InviteGroupCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/3029/libopenmetaverse/trunk/Programs/examples/TestClient/Commands/Groups/InviteGroupCommand.cs
+END

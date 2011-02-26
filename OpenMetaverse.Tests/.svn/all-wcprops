@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/3462/libopenmetaverse/trunk/OpenMetaverse.Tests
+END
+NetworkTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3182/libopenmetaverse/trunk/OpenMetaverse.Tests/NetworkTests.cs
+END
+NotationLLSDTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/3367/libopenmetaverse/trunk/OpenMetaverse.Tests/NotationLLSDTests.cs
+END
+PrimObjectTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/2478/libopenmetaverse/trunk/OpenMetaverse.Tests/PrimObjectTests.cs
+END
+XmlLLSDTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/2768/libopenmetaverse/trunk/OpenMetaverse.Tests/XmlLLSDTests.cs
+END
+TypeTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/3462/libopenmetaverse/trunk/OpenMetaverse.Tests/TypeTests.cs
+END
+BinaryLLSDTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/3364/libopenmetaverse/trunk/OpenMetaverse.Tests/BinaryLLSDTests.cs
+END
+MessageTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3347/libopenmetaverse/trunk/OpenMetaverse.Tests/MessageTests.cs
+END
+PacketTests.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3435/libopenmetaverse/trunk/OpenMetaverse.Tests/PacketTests.cs
+END

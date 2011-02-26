@@ -1,0 +1,64 @@
+9
+
+dir
+3478
+https://libopenmetaverse.googlecode.com/svn/libopenmetaverse/trunk/Programs
+https://libopenmetaverse.googlecode.com/svn
+
+
+
+2010-11-20T14:14:26.709316Z
+3473
+latifer
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+52acb1d6-8a22-11de-b505-999d5b087335
+
+AvatarPreview
+dir
+
+Baker
+dir
+
+PrimWorkshop
+dir
+
+mapgenerator
+dir
+
+WinGridProxy
+dir
+
+VoiceTest
+dir
+
+Prebuild
+dir
+
+importprimscript
+dir
+
+GridProxy
+dir
+
+VisualParamGenerator
+dir
+
+GridImageUpload
+dir
+
+examples
+dir
+

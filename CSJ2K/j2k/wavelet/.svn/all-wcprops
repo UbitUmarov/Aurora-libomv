@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/3415/libopenmetaverse/trunk/CSJ2K/j2k/wavelet
+END
+WTFilterSpec.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/wavelet/WTFilterSpec.cs
+END
+WTDecompSpec.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/3143/libopenmetaverse/trunk/CSJ2K/j2k/wavelet/WTDecompSpec.cs
+END
+WaveletFilter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/wavelet/WaveletFilter.cs
+END
+Subband.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/wavelet/Subband.cs
+END
+WaveletTransform.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/wavelet/WaveletTransform.cs
+END
+FilterTypes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/wavelet/FilterTypes.cs
+END

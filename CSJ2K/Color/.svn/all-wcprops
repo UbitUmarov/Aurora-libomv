@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Color
+END
+ColorSpaceMapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Color/ColorSpaceMapper.cs
+END
+SYccColorSpaceMapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Color/SYccColorSpaceMapper.cs
+END
+EsRgbColorSpaceMapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Color/EsRgbColorSpaceMapper.cs
+END
+PalettizedColorSpaceMapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Color/PalettizedColorSpaceMapper.cs
+END
+ChannelDefinitionMapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Color/ChannelDefinitionMapper.cs
+END
+EnumeratedColorSpaceMapper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Color/EnumeratedColorSpaceMapper.cs
+END
+ColorSpaceException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Color/ColorSpaceException.cs
+END
+ColorSpace.cs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Color/ColorSpace.cs
+END
+Resampler.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Color/Resampler.cs
+END

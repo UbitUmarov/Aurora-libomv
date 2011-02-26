@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut
+END
+LookUpTable8Gamma.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable8Gamma.cs
+END
+MatrixBasedTransformException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/MatrixBasedTransformException.cs
+END
+MatrixBasedTransformTosRGB.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/MatrixBasedTransformTosRGB.cs
+END
+LookUpTable32LinearSRGBtoSRGB.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable32LinearSRGBtoSRGB.cs
+END
+LookUpTable.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable.cs
+END
+MonochromeTransformException.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/MonochromeTransformException.cs
+END
+LookUpTable16LinearSRGBtoSRGB.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable16LinearSRGBtoSRGB.cs
+END
+MonochromeTransformTosRGB.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/MonochromeTransformTosRGB.cs
+END
+LookUpTable32.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable32.cs
+END
+LookUpTable16.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable16.cs
+END
+LookUpTableFPInterp.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTableFPInterp.cs
+END
+LookUpTable32Gamma.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable32Gamma.cs
+END
+LookUpTable16Gamma.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable16Gamma.cs
+END
+LookUpTable8Interp.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable8Interp.cs
+END
+LookUpTableFP.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTableFP.cs
+END
+LookUpTable32Interp.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable32Interp.cs
+END
+LookUpTable8.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable8.cs
+END
+LookUpTable16Interp.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTable16Interp.cs
+END
+LookUpTableFPGamma.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/Icc/Lut/LookUpTableFPGamma.cs
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/3119/libopenmetaverse/trunk/CSJ2K/j2k/quantization
+END
+GuardBitsSpec.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3119/libopenmetaverse/trunk/CSJ2K/j2k/quantization/GuardBitsSpec.cs
+END
+QuantTypeSpec.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/quantization/QuantTypeSpec.cs
+END
+QuantizationType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3118/libopenmetaverse/trunk/CSJ2K/j2k/quantization/QuantizationType.cs
+END
+QuantStepSizeSpec.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3119/libopenmetaverse/trunk/CSJ2K/j2k/quantization/QuantStepSizeSpec.cs
+END
