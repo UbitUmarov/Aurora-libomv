@@ -532,7 +532,7 @@ namespace OpenMetaverse
 
         public static Vector3 operator *(Vector3 vec, Quaternion rot)
         {
-/*
+
         float rw = -rot.X * vec.X - rot.Y * vec.Y - rot.Z * vec.Z;
         float rx = rot.W * vec.X + rot.Y * vec.Z - rot.Z * vec.Y;
         float ry = rot.W * vec.Y + rot.Z * vec.X - rot.X * vec.Z;
@@ -542,33 +542,7 @@ namespace OpenMetaverse
         vec.Y = -rw * rot.Y + ry * rot.W - rz * rot.X + rx * rot.Z;
         vec.Z = -rw * rot.Z + rz * rot.W - rx * rot.Y + ry * rot.X;
         return vec;
-*/
-            float XX = rot.X * rot.X;
-            float XY = rot.X * rot.Y;
-            float XZ = rot.X * rot.Z;
-            float YY = rot.Y * rot.Y;
-            float YZ = rot.Y * rot.Z;
-            float ZZ = rot.Z * rot.Z;
-            float WX = rot.W * rot.X;
-            float WY = rot.W * rot.Y;
-            float WZ = rot.W * rot.Z;
-            float WW = rot.W * rot.W;        
 
-            Vector3 vec2;
-
-            vec2.X =
-                     vec.X * (XX + WW - YY - ZZ) +
-                2f * ((XY - WZ) * vec.Y + (XY + WY) * vec.Z);
-
-            vec2.Y =
-                2f * (vec.X * (XY + WZ) + vec.Z * (YZ - WX)) +
-                     vec.Y * (YY + WW - XX - ZZ);
-
-            vec2.Z =
-                2f * (vec.X * (XZ - WY) + vec.Y * (YZ + WX)) +
-                     vec.Z * (ZZ + WW - XX - YY);
-
-            return vec2;
         }
 
         public static Vector3 operator *(Vector3 vector, Matrix4 matrix)
