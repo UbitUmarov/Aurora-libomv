@@ -410,7 +410,8 @@ namespace OpenMetaverse
             q.Z = axis.Z * s;
             q.W = c;
 
-            return Quaternion.Normalize(q);
+        //            return Quaternion.Normalize(q); // if axis is normalized so will be q with code above
+            return q;
         }
 
         /// <summary>
