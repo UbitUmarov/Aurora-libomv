@@ -40,13 +40,13 @@ namespace OpenMetaverse
       
         /// <summary>X value</summary>
         [FieldOffset(0)]
-            public float X;
+        public float X;
         /// <summary>Y value</summary>
         [FieldOffset(sizeof(float))]
             public float Y;
         /// <summary>Z value</summary>
         [FieldOffset(2*sizeof(float))]
-            public float Z;
+            public float Z;      
 
         #region Constructors
 
@@ -102,7 +102,7 @@ namespace OpenMetaverse
 
         public float Length()
         {
-            return (float)Math.Sqrt(X*X +Y*Y +Z*Z);
+        return (float)Math.Sqrt(X * X + Y * Y + Z * Z);
         }
 
         public float LengthSquared()
@@ -166,7 +166,7 @@ namespace OpenMetaverse
 
                 X = BitConverter.ToSingle(conversionBuffer, 0);
                 Y = BitConverter.ToSingle(conversionBuffer, 4);
-                Z = BitConverter.ToSingle(conversionBuffer, 8);
+                Z = BitConverter.ToSingle(conversionBuffer, 8);                             
             }
             else
             {
@@ -329,12 +329,12 @@ namespace OpenMetaverse
             const float MAG_THRESHOLD = 0.0000001f;
             float factor = Mag(value);
             if (factor > MAG_THRESHOLD)
-            {
+                {
                 factor = 1f / factor;
                 value.X *= factor;
                 value.Y *= factor;
                 value.Z *= factor;
-            }
+                }
             else
             {
                 value.X = 0f;
@@ -535,14 +535,14 @@ namespace OpenMetaverse
 
         public static Vector3 operator *(Vector3 vec, Quaternion rot)
         {
-        float rw = -rot.X * vec.X - rot.Y * vec.Y - rot.Z * vec.Z;
+        float rw = rot.X * vec.X + rot.Y * vec.Y + rot.Z * vec.Z; // negated
         float rx = rot.W * vec.X + rot.Y * vec.Z - rot.Z * vec.Y;
         float ry = rot.W * vec.Y + rot.Z * vec.X - rot.X * vec.Z;
         float rz = rot.W * vec.Z + rot.X * vec.Y - rot.Y * vec.X;
 
-        vec.X = -rw * rot.X + rx * rot.W - ry * rot.Z + rz * rot.Y;
-        vec.Y = -rw * rot.Y + ry * rot.W - rz * rot.X + rx * rot.Z;
-        vec.Z = -rw * rot.Z + rz * rot.W - rx * rot.Y + ry * rot.X;
+        vec.X = rw * rot.X + rx * rot.W - ry * rot.Z + rz * rot.Y;
+        vec.Y = rw * rot.Y + ry * rot.W - rz * rot.X + rx * rot.Z;
+        vec.Z = rw * rot.Z + rz * rot.W - rx * rot.Y + ry * rot.X;
         return vec;
         }
 
