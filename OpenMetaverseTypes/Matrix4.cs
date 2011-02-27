@@ -422,7 +422,7 @@ namespace OpenMetaverse
         public static Matrix4 CreateFromQuaternion(Quaternion quaternion)
         {
             Matrix4 matrix;
-
+/* not faster
             float xx = quaternion.X * quaternion.X;
             float yy = quaternion.Y * quaternion.Y;
             float zz = quaternion.Z * quaternion.Z;
@@ -442,25 +442,44 @@ namespace OpenMetaverse
             matrix.M11 = ww + xx - yy - zz;
             matrix.M12 = xy + wz;
             matrix.M13 = xz - wy;
-            // matrix.M11 = 1f - (2f * (yy + zz));
-            // matrix.M12 = 2f * (xy + zw); // this should be -
-            // matrix.M13 = 2f * (zx - yw); // this should be +
             matrix.M14 = 0f;
 
             matrix.M21 = xy - wz;
             matrix.M22 = ww - xx + yy - zz;
             matrix.M23 = yz + wx;
-            //matrix.M21 = 2f * (xy - zw);
-            //matrix.M22 = 1f - (2f * (zz + xx));
-            //matrix.M23 = 2f * (yz + xw);
             matrix.M24 = 0f;
 
             matrix.M31 = xz + wy;
             matrix.M32 = yz - wx;
             matrix.M33 = ww - xx - yy + zz;
-            //matrix.M31 = 2f * (zx + yw);
-            //matrix.M32 = 2f * (yz - xw);
-            //matrix.M33 = 1f - (2f * (yy + xx));
+            matrix.M34 = 0f;
+
+            matrix.M41 = matrix.M42 = matrix.M43 = 0f;
+            matrix.M44 = 1f;
+*/
+            float xx = quaternion.X * quaternion.X;
+            float yy = quaternion.Y * quaternion.Y;
+            float zz = quaternion.Z * quaternion.Z;
+            float xy = quaternion.X * quaternion.Y;
+            float zw = quaternion.Z * quaternion.W;
+            float zx = quaternion.Z * quaternion.X;
+            float yw = quaternion.Y * quaternion.W;
+            float yz = quaternion.Y * quaternion.Z;
+            float xw = quaternion.X * quaternion.W;
+
+            matrix.M11 = 1f - (2f * (yy + zz));
+            matrix.M12 = 2f * (xy + zw);
+            matrix.M13 = 2f * (zx - yw);
+            matrix.M14 = 0f;
+
+            matrix.M21 = 2f * (xy - zw);
+            matrix.M22 = 1f - (2f * (zz + xx));
+            matrix.M23 = 2f * (yz + xw);
+            matrix.M24 = 0f;
+
+            matrix.M31 = 2f * (zx + yw);
+            matrix.M32 = 2f * (yz - xw);
+            matrix.M33 = 1f - (2f * (yy + xx));
             matrix.M34 = 0f;
 
             matrix.M41 = matrix.M42 = matrix.M43 = 0f;
@@ -934,10 +953,11 @@ namespace OpenMetaverse
 
         public static Matrix4 Inverse3x3(Matrix4 matrix)
         {
+        float det = matrix.Determinant3x3();
             if (matrix.Determinant3x3() == 0f)
                 throw new ArgumentException("Singular matrix inverse not possible");
 
-            return (Adjoint3x3(matrix) / matrix.Determinant3x3());
+            return (Adjoint3x3(matrix) / det);
         }
 
         public static Matrix4 Adjoint3x3(Matrix4 matrix)
@@ -955,10 +975,11 @@ namespace OpenMetaverse
 
         public static Matrix4 Inverse(Matrix4 matrix)
         {
-            if (matrix.Determinant() == 0f)
+            float det = matrix.Determinant();
+            if ( det == 0f)
                 throw new ArgumentException("Singular matrix inverse not possible");
 
-            return (Adjoint(matrix) / matrix.Determinant());
+            return (Adjoint(matrix) / det);
         }
 
         public static Matrix4 Adjoint(Matrix4 matrix)
