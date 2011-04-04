@@ -469,9 +469,9 @@ namespace CSJ2K.j2k.util
 		/// 
 		/// 
 		/// </returns>
-		public virtual bool runTarget(IThreadRunnable t, System.Object l, bool async)
+		public virtual bool runTarget(IThreadRunnable t, System.Object l, bool runAsync)
 		{
-			return runTarget(t, l, async, false);
+			return runTarget(t, l, runAsync, false);
 		}
 		
 		/// <summary> Runs the run method of the specified target in an idle thread of this
@@ -506,12 +506,12 @@ namespace CSJ2K.j2k.util
 		/// 
 		/// 
 		/// </returns>
-		public virtual bool runTarget(IThreadRunnable t, System.Object l, bool async, bool notifyAll)
+		public virtual bool runTarget(IThreadRunnable t, System.Object l, bool runAsync, bool notifyAll)
 		{
 			ThreadPoolThread runner; // The thread to run the target
 			
 			// Get a thread to run
-			runner = getIdle(async);
+			runner = getIdle(runAsync);
 			// If no runner return failure
 			if (runner == null)
 				return false;
@@ -612,12 +612,12 @@ namespace CSJ2K.j2k.util
 		/// list, or null if none is available.
 		/// 
 		/// </returns>
-		private ThreadPoolThread getIdle(bool async)
+		private ThreadPoolThread getIdle(bool runAsync)
 		{
 			// Lock the idle array to avoid races with 'putInIdleList()'
 			lock (idle)
 			{
-				if (async)
+                if (runAsync)
 				{
 					// In asynchronous mode just return null if no idle thread
 					if (nidle == 0)

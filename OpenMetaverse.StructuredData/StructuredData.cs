@@ -83,6 +83,7 @@ namespace OpenMetaverse.StructuredData
     public partial class OSD
     {
         public virtual OSDType Type { get { return OSDType.Unknown; } }
+        public virtual object Value() { return null; }
 
         public virtual bool AsBoolean() { return false; }
         public virtual int AsInteger() { return 0; }
@@ -407,6 +408,7 @@ namespace OpenMetaverse.StructuredData
         private static byte[] falseBinary = { 0x30 };
 
         public override OSDType Type { get { return OSDType.Boolean; } }
+        public override object Value() { return value; }
 
         public OSDBoolean(bool value)
         {
@@ -430,6 +432,7 @@ namespace OpenMetaverse.StructuredData
         private int value;
 
         public override OSDType Type { get { return OSDType.Integer; } }
+        public override object Value() { return value; }
 
         public OSDInteger(int value)
         {
@@ -456,6 +459,7 @@ namespace OpenMetaverse.StructuredData
         private double value;
 
         public override OSDType Type { get { return OSDType.Real; } }
+        public override object Value() { return value; }
 
         public OSDReal(double value)
         {
@@ -523,6 +527,7 @@ namespace OpenMetaverse.StructuredData
         private string value;
 
         public override OSDType Type { get { return OSDType.String; } }
+        public override object Value() { return value; }
 
         public OSDString(string value)
         {
@@ -627,6 +632,7 @@ namespace OpenMetaverse.StructuredData
         private UUID value;
 
         public override OSDType Type { get { return OSDType.UUID; } }
+        public override object Value() { return value; }
 
         public OSDUUID(UUID value)
         {
@@ -648,6 +654,7 @@ namespace OpenMetaverse.StructuredData
         private DateTime value;
 
         public override OSDType Type { get { return OSDType.Date; } }
+        public override object Value() { return value; }
 
         public OSDDate(DateTime value)
         {
@@ -702,6 +709,7 @@ namespace OpenMetaverse.StructuredData
         private Uri value;
 
         public override OSDType Type { get { return OSDType.URI; } }
+        public override object Value() { return value; }
 
         public OSDUri(Uri value)
         {
@@ -733,6 +741,7 @@ namespace OpenMetaverse.StructuredData
         private byte[] value;
 
         public override OSDType Type { get { return OSDType.Binary; } }
+        public override object Value() { return value; }
 
         public OSDBinary(byte[] value)
         {
