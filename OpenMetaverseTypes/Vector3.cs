@@ -34,19 +34,15 @@ namespace OpenMetaverse
     /// A three-dimensional vector with floating-point values
     /// </summary>
     [Serializable]
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector3 : IComparable<Vector3>, IEquatable<Vector3>
     {
-      
         /// <summary>X value</summary>
-        [FieldOffset(0)]
         public float X;
         /// <summary>Y value</summary>
-        [FieldOffset(sizeof(float))]
-            public float Y;
+        public float Y;
         /// <summary>Z value</summary>
-        [FieldOffset(2*sizeof(float))]
-            public float Z;      
+        public float Z;
 
         #region Constructors
 
@@ -102,12 +98,12 @@ namespace OpenMetaverse
 
         public float Length()
         {
-        return (float)Math.Sqrt(X * X + Y * Y + Z * Z);
+            return (float)Math.Sqrt(DistanceSquared(this, Zero));
         }
 
         public float LengthSquared()
         {
-        return (X * X + Y * Y + Z * Z);
+            return DistanceSquared(this, Zero);
         }
 
         public void Normalize()
@@ -126,8 +122,8 @@ namespace OpenMetaverse
         /// is less than the given tolerance, otherwise false</returns>
         public bool ApproxEquals(Vector3 vec, float tolerance)
         {
-            float  diff = DistanceSquared(this,vec);
-            return (diff <= tolerance * tolerance);
+            Vector3 diff = this - vec;
+            return (diff.LengthSquared() <= tolerance * tolerance);
         }
 
         /// <summary>
@@ -166,7 +162,7 @@ namespace OpenMetaverse
 
                 X = BitConverter.ToSingle(conversionBuffer, 0);
                 Y = BitConverter.ToSingle(conversionBuffer, 4);
-                Z = BitConverter.ToSingle(conversionBuffer, 8);                             
+                Z = BitConverter.ToSingle(conversionBuffer, 8);
             }
             else
             {
@@ -327,14 +323,14 @@ namespace OpenMetaverse
         public static Vector3 Normalize(Vector3 value)
         {
             const float MAG_THRESHOLD = 0.0000001f;
-            float factor = Mag(value);
+            float factor = Distance(value, Zero);
             if (factor > MAG_THRESHOLD)
-                {
+            {
                 factor = 1f / factor;
                 value.X *= factor;
                 value.Y *= factor;
                 value.Z *= factor;
-                }
+            }
             else
             {
                 value.X = 0f;
@@ -380,25 +376,18 @@ namespace OpenMetaverse
         /// <param name="b">Normalized target vector</param>
         public static Quaternion RotationBetween(Vector3 a, Vector3 b)
         {
-            float dotterm = Dot(a, b) + (float)Math.Sqrt(a.LengthSquared() * b.LengthSquared());
-            Vector3 axis = Cross(a, b);
-            Quaternion q;
-            if (dotterm < 0.001)
-                {
-                q.X = -axis.Z;
-                q.Y = axis.Y;
-                q.Z = axis.X;
-                q.W = 0;
-                }
-            else
-                {
-                q.X = axis.X;
-                q.Y = axis.Y;
-                q.Z = axis.Z;
-                q.W = dotterm;
-                }
+            float dotProduct = Dot(a, b);
+            Vector3 crossProduct = Cross(a, b);
+            float magProduct = a.Length() * b.Length();
+            double angle = Math.Acos(dotProduct / magProduct);
+            Vector3 axis = Normalize(crossProduct);
+            float s = (float)Math.Sin(angle / 2d);
 
-            return Quaternion.Normalize(q);
+            return new Quaternion(
+                axis.X * s,
+                axis.Y * s,
+                axis.Z * s,
+                (float)Math.Cos(angle / 2d));
         }
 
         /// <summary>
@@ -535,15 +524,16 @@ namespace OpenMetaverse
 
         public static Vector3 operator *(Vector3 vec, Quaternion rot)
         {
-        float rw = rot.X * vec.X + rot.Y * vec.Y + rot.Z * vec.Z; // negated
-        float rx = rot.W * vec.X + rot.Y * vec.Z - rot.Z * vec.Y;
-        float ry = rot.W * vec.Y + rot.Z * vec.X - rot.X * vec.Z;
-        float rz = rot.W * vec.Z + rot.X * vec.Y - rot.Y * vec.X;
+            float rw = -rot.X * vec.X - rot.Y * vec.Y - rot.Z * vec.Z;
+            float rx = rot.W * vec.X + rot.Y * vec.Z - rot.Z * vec.Y;
+            float ry = rot.W * vec.Y + rot.Z * vec.X - rot.X * vec.Z;
+            float rz = rot.W * vec.Z + rot.X * vec.Y - rot.Y * vec.X;
 
-        vec.X = rw * rot.X + rx * rot.W - ry * rot.Z + rz * rot.Y;
-        vec.Y = rw * rot.Y + ry * rot.W - rz * rot.X + rx * rot.Z;
-        vec.Z = rw * rot.Z + rz * rot.W - rx * rot.Y + ry * rot.X;
-        return vec;
+            vec.X = -rw * rot.X + rx * rot.W - ry * rot.Z + rz * rot.Y;
+            vec.Y = -rw * rot.Y + ry * rot.W - rz * rot.X + rx * rot.Z;
+            vec.Z = -rw * rot.Z + rz * rot.W - rx * rot.Y + ry * rot.X;
+
+            return vec;
         }
 
         public static Vector3 operator *(Vector3 vector, Matrix4 matrix)

@@ -164,6 +164,9 @@ namespace OpenMetaverse.Tests
             scriptDialogPacket.Data.ObjectID = UUID.Zero;
             scriptDialogPacket.Data.ObjectName = Utils.EmptyBytes;
             scriptDialogPacket.Buttons = new ScriptDialogPacket.ButtonsBlock[0];
+            scriptDialogPacket.OwnerData = new ScriptDialogPacket.OwnerDataBlock[1];
+            scriptDialogPacket.OwnerData[0] = new ScriptDialogPacket.OwnerDataBlock();
+            scriptDialogPacket.OwnerData[0].OwnerID = UUID.Zero;
 
             byte[][] splitPacket = scriptDialogPacket.ToBytesMultiple();
 

@@ -115,7 +115,7 @@ namespace OpenMetaverse
         const int REBAKE_DELAY = 1000 * 20;
 
         /// <summary>Total number of wearables for each avatar</summary>
-        public const int WEARABLE_COUNT = 13;
+        public const int WEARABLE_COUNT = 16;
         /// <summary>Total number of baked textures on each avatar</summary>
         public const int BAKED_TEXTURE_COUNT = 6;
         /// <summary>Total number of wearables per bake layer</summary>
@@ -715,6 +715,18 @@ namespace OpenMetaverse
         /// define a new outfit</param>
         public void ReplaceOutfit(List<InventoryItem> wearableItems)
         {
+            ReplaceOutfit(wearableItems, true);
+        }
+
+        /// <summary>
+        /// Replace the current outfit with a list of wearables and set appearance
+        /// </summary>
+        /// <param name="wearableItems">List of wearable inventory items that
+        /// define a new outfit</param>
+        /// <param name="safe">Check if we have all body parts, set this to false only
+        /// if you know what you're doing</param>
+        public void ReplaceOutfit(List<InventoryItem> wearableItems, bool safe)
+        {
             List<InventoryWearable> wearables = new List<InventoryWearable>();
             List<InventoryItem> attachments = new List<InventoryItem>();
 
@@ -728,33 +740,40 @@ namespace OpenMetaverse
                     attachments.Add(item);
             }
 
-            // If we don't already have a the current agent wearables downloaded, updating to a
-            // new set of wearables that doesn't have all of the bodyparts can leave the avatar
-            // in an inconsistent state. If any bodypart entries are empty, we need to fetch the
-            // current wearables first
-            bool needsCurrentWearables = false;
-            lock (Wearables)
+            if (safe)
             {
-                for (int i = 0; i < WEARABLE_COUNT; i++)
+                // If we don't already have a the current agent wearables downloaded, updating to a
+                // new set of wearables that doesn't have all of the bodyparts can leave the avatar
+                // in an inconsistent state. If any bodypart entries are empty, we need to fetch the
+                // current wearables first
+                bool needsCurrentWearables = false;
+                lock (Wearables)
                 {
-                    WearableType wearableType = (WearableType)i;
-                    if (WearableTypeToAssetType(wearableType) == AssetType.Bodypart && !Wearables.ContainsKey(wearableType))
+                    for (int i = 0; i < WEARABLE_COUNT; i++)
                     {
-                        needsCurrentWearables = true;
-                        break;
+                        WearableType wearableType = (WearableType)i;
+                        if (WearableTypeToAssetType(wearableType) == AssetType.Bodypart && !Wearables.ContainsKey(wearableType))
+                        {
+                            needsCurrentWearables = true;
+                            break;
+                        }
                     }
                 }
-            }
 
-            if (needsCurrentWearables && !GetAgentWearables())
-            {
-                Logger.Log("Failed to fetch the current agent wearables, cannot safely replace outfit",
-                    Helpers.LogLevel.Error);
-                return;
+                if (needsCurrentWearables && !GetAgentWearables())
+                {
+                    Logger.Log("Failed to fetch the current agent wearables, cannot safely replace outfit",
+                        Helpers.LogLevel.Error);
+                    return;
+                }
             }
 
             // Replace our local Wearables collection, send the packet(s) to update our
             // attachments, tell sim what we are wearing now, and start the baking process
+            if (!safe)
+            {
+                SetAppearanceSerialNum++;
+            }
             ReplaceOutfit(wearables);
             AddAttachments(attachments, true);
             SendAgentIsNowWearing();
@@ -1652,7 +1671,28 @@ namespace OpenMetaverse
                 #region VisualParam
 
                 int vpIndex = 0;
-                set.VisualParam = new AgentSetAppearancePacket.VisualParamBlock[218];
+                int nrParams;
+                bool wearingPhysics = false;
+                
+                foreach (WearableData wearable in Wearables.Values)
+                {
+                    if (wearable.WearableType == WearableType.Physics)
+                    {
+                        wearingPhysics = true;
+                        break;
+                    }
+                }
+
+                if (wearingPhysics)
+                {
+                    nrParams = 251;
+                }
+                else
+                {
+                    nrParams = 218;
+                }
+
+                set.VisualParam = new AgentSetAppearancePacket.VisualParamBlock[nrParams];
 
                 foreach (KeyValuePair<int, VisualParam> kvp in VisualParams.Params)
                 {
@@ -1707,6 +1747,8 @@ namespace OpenMetaverse
                             agentSizeVPHipLength = paramValue;
                             break;
                     }
+
+                    if (vpIndex == nrParams) break;
                 }
 
                 #endregion VisualParam
@@ -2049,6 +2091,7 @@ namespace OpenMetaverse
                 case WearableType.Skirt:
                 case WearableType.Tattoo:
                 case WearableType.Alpha:
+                case WearableType.Physics:
                     return AssetType.Clothing;
                 default:
                     return AssetType.Unknown;

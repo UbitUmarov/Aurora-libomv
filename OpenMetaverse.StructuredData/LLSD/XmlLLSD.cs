@@ -137,37 +137,37 @@ namespace OpenMetaverse.StructuredData
                     break;
                 case OSDType.Boolean:
                     writer.WriteStartElement(String.Empty, "boolean", String.Empty);
-                    writer.WriteValue(data.Value());
+                    writer.WriteString(data.AsString());
                     writer.WriteEndElement();
                     break;
                 case OSDType.Integer:
                     writer.WriteStartElement(String.Empty, "integer", String.Empty);
-                    writer.WriteValue(data.Value());
+                    writer.WriteString(data.AsString());
                     writer.WriteEndElement();
                     break;
                 case OSDType.Real:
                     writer.WriteStartElement(String.Empty, "real", String.Empty);
-                    writer.WriteValue(data.Value());
+                    writer.WriteString(data.AsString());
                     writer.WriteEndElement();
                     break;
                 case OSDType.String:
                     writer.WriteStartElement(String.Empty, "string", String.Empty);
-                    writer.WriteValue(data.Value());
+                    writer.WriteString(data.AsString());
                     writer.WriteEndElement();
                     break;
                 case OSDType.UUID:
                     writer.WriteStartElement(String.Empty, "uuid", String.Empty);
-                    writer.WriteValue(data.Value().ToString()); //UUID has to be string!
+                    writer.WriteString(data.AsString());
                     writer.WriteEndElement();
                     break;
                 case OSDType.Date:
                     writer.WriteStartElement(String.Empty, "date", String.Empty);
-                    writer.WriteValue(data.Value()); 
+                    writer.WriteString(data.AsString());
                     writer.WriteEndElement();
                     break;
                 case OSDType.URI:
                     writer.WriteStartElement(String.Empty, "uri", String.Empty);
-                    writer.WriteValue(data.Value().ToString());//URI has to be string
+                    writer.WriteString(data.AsString());
                     writer.WriteEndElement();
                     break;
                 case OSDType.Binary:
@@ -175,7 +175,7 @@ namespace OpenMetaverse.StructuredData
                         writer.WriteStartAttribute(String.Empty, "encoding", String.Empty);
                         writer.WriteString("base64");
                         writer.WriteEndAttribute();
-                        writer.WriteValue(data.AsString()); //Has to be base64
+                    writer.WriteString(data.AsString());
                     writer.WriteEndElement();
                     break;
                 case OSDType.Map:

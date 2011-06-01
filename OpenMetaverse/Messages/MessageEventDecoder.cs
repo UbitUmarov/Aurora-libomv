@@ -86,7 +86,6 @@ namespace OpenMetaverse.Messages
                 case "AgentDropGroup": message = new AgentDropGroupMessage(); break;
                 case "ForceCloseChatterBoxSession": message = new ForceCloseChatterBoxSessionMessage(); break;
                 case "UploadBakedTexture": message = new UploadBakedTextureMessage(); break;
-                case "WebFetchInventoryDescendents": message = new WebFetchInventoryDescendentsMessage(); break;
                 case "RegionInfo": message = new RegionInfoMessage(); break;
                 case "ObjectMediaNavigate": message = new ObjectMediaNavigateMessage(); break;
                 case "ObjectMedia": message = new ObjectMediaMessage(); break;
@@ -97,6 +96,7 @@ namespace OpenMetaverse.Messages
                 case "SetDisplayNameReply": message = new SetDisplayNameReplyMessage(); break;
                 case "DisplayNameUpdate": message = new DisplayNameUpdateMessage(); break;
                 //case "ProductInfoRequest": message = new ProductInfoRequestMessage(); break;
+                case "ObjectPhysicsProperties": message = new ObjectPhysicsPropertiesMessage(); break;
 
                 // Capabilities TODO:
                 // DispatchRegionInfo
@@ -128,7 +128,7 @@ namespace OpenMetaverse.Messages
                 }
                 catch (Exception e)
                 {
-                    Logger.Log("Exception while tring to Deserialize " + eventName + ":" + e.Message + ": " + e.StackTrace, Helpers.LogLevel.Error);                    
+                    Logger.Log("Exception while trying to Deserialize " + eventName + ":" + e.Message + ": " + e.StackTrace, Helpers.LogLevel.Error);                    
                 }
 
                 return null;

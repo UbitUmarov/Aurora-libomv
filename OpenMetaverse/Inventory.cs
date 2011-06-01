@@ -244,8 +244,8 @@ namespace OpenMetaverse
                     // Unfortunately, this breaks the nice unified tree
                     // while we're waiting for the parent's data to come in.
                     // As soon as we get the parent, the tree repairs itself.
-                    Logger.DebugLog("Attempting to update inventory child of " +
-                        item.ParentUUID.ToString() + " when we have no local reference to that folder", Client);
+                    //Logger.DebugLog("Attempting to update inventory child of " +
+                    //    item.ParentUUID.ToString() + " when we have no local reference to that folder", Client);
 
                     if (Client.Settings.FETCH_MISSING_INVENTORY)
                     {
@@ -440,10 +440,15 @@ namespace OpenMetaverse
 
                             if (cache_folder.Version != server_folder.Version)
                             {
-                                Logger.DebugLog("Inventory Cache/Server version mismatch on "+node.Data.Name+" "+cache_folder.Version.ToString()+" vs "+server_folder.Version.ToString());
+                                Logger.DebugLog("Inventory Cache/Server version mismatch on " + node.Data.Name + " " + cache_folder.Version.ToString() + " vs " + server_folder.Version.ToString());
                                 pnode.NeedsUpdate = true;
                                 dirty_folders.Add(node.Data.UUID);
                             }
+                            else
+                            {
+                                pnode.NeedsUpdate = false;
+                            }
+
                             del_nodes.Add(node);
                         }
                     }

@@ -30,44 +30,13 @@ using System.Runtime.InteropServices;
 namespace OpenMetaverse
 {
     [Serializable]
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Matrix4 : IEquatable<Matrix4>
     {
-        [FieldOffset(sizeof(float))]
-        public float M11;
-        [FieldOffset(sizeof(float))]
-        public float M12;
-        [FieldOffset(2*sizeof(float))]
-        public float M13;
-        [FieldOffset(3*sizeof(float))]
-        public float M14;
-
-        [FieldOffset(4*sizeof(float))]
-        public float M21;
-        [FieldOffset(5*sizeof(float))]
-        public float M22;
-        [FieldOffset(6*sizeof(float))]
-        public float M23;
-        [FieldOffset(7*sizeof(float))]
-        public float M24;
-
-        [FieldOffset(8*sizeof(float))]
-        public float M31;
-        [FieldOffset(9*sizeof(float))]
-        public float M32;
-        [FieldOffset(10*sizeof(float))]
-        public float M33;
-        [FieldOffset(11*sizeof(float))]
-        public float M34;
-
-        [FieldOffset(12*sizeof(float))]
-        public float M41;
-        [FieldOffset(13*sizeof(float))]
-        public float M42;
-        [FieldOffset(14*sizeof(float))]
-        public float M43;
-        [FieldOffset(15*sizeof(float))]
-        public float M44;
+        public float M11, M12, M13, M14;
+        public float M21, M22, M23, M24;
+        public float M31, M32, M33, M34;
+        public float M41, M42, M43, M44;
 
         #region Properties
 
@@ -422,41 +391,7 @@ namespace OpenMetaverse
         public static Matrix4 CreateFromQuaternion(Quaternion quaternion)
         {
             Matrix4 matrix;
-/* not faster
-            float xx = quaternion.X * quaternion.X;
-            float yy = quaternion.Y * quaternion.Y;
-            float zz = quaternion.Z * quaternion.Z;
-            float ww = quaternion.Z * quaternion.Z;
-            float twoX = 2.0f * quaternion.X;
-            float twoY = 2.0f * quaternion.Y;
-            float twoW = 2.0f * quaternion.W;
-            float wx = twoW * quaternion.X;
-            float xy = twoX * quaternion.Y;
-            float wy = twoW * quaternion.Y;
-            float xz = twoX * quaternion.Z;
-            float yz = twoY * quaternion.Z;
-            float wz = twoW * quaternion.Z;
 
-
-            // kept sum and dif conventions on off diagonal elements, oposite to others
-            matrix.M11 = ww + xx - yy - zz;
-            matrix.M12 = xy + wz;
-            matrix.M13 = xz - wy;
-            matrix.M14 = 0f;
-
-            matrix.M21 = xy - wz;
-            matrix.M22 = ww - xx + yy - zz;
-            matrix.M23 = yz + wx;
-            matrix.M24 = 0f;
-
-            matrix.M31 = xz + wy;
-            matrix.M32 = yz - wx;
-            matrix.M33 = ww - xx - yy + zz;
-            matrix.M34 = 0f;
-
-            matrix.M41 = matrix.M42 = matrix.M43 = 0f;
-            matrix.M44 = 1f;
-*/
             float xx = quaternion.X * quaternion.X;
             float yy = quaternion.Y * quaternion.Y;
             float zz = quaternion.Z * quaternion.Z;
@@ -953,11 +888,10 @@ namespace OpenMetaverse
 
         public static Matrix4 Inverse3x3(Matrix4 matrix)
         {
-        float det = matrix.Determinant3x3();
             if (matrix.Determinant3x3() == 0f)
                 throw new ArgumentException("Singular matrix inverse not possible");
 
-            return (Adjoint3x3(matrix) / det);
+            return (Adjoint3x3(matrix) / matrix.Determinant3x3());
         }
 
         public static Matrix4 Adjoint3x3(Matrix4 matrix)
@@ -975,11 +909,10 @@ namespace OpenMetaverse
 
         public static Matrix4 Inverse(Matrix4 matrix)
         {
-            float det = matrix.Determinant();
-            if ( det == 0f)
+            if (matrix.Determinant() == 0f)
                 throw new ArgumentException("Singular matrix inverse not possible");
 
-            return (Adjoint(matrix) / det);
+            return (Adjoint(matrix) / matrix.Determinant());
         }
 
         public static Matrix4 Adjoint(Matrix4 matrix)

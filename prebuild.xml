@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Prebuild xmlns="http://dnpb.sourceforge.net/schemas/prebuild-1.7.xsd" version="1.7">
-  <Solution name="OpenMetaverse" activeConfig="Release" version="0.6.0">
+  <Solution name="OpenMetaverse" activeConfig="Debug" version="0.6.0">
     <Configuration name="Debug">
       <Options>
         <CompilerDefines>TRACE;DEBUG</CompilerDefines>
@@ -122,6 +122,7 @@
       <Reference name="OpenMetaverse.StructuredData"/>
       <Reference name="log4net"/>            
       <Reference name="XMLRPC"/>
+	  <Reference name="zlib.net" />
 
       <Files>
         <Match pattern="*.cs" recurse="true"/>
