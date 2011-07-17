@@ -1035,7 +1035,7 @@ namespace OpenMetaverse
         /// <returns>A 64-bit integer containing the two 32-bit input values</returns>
         public static ulong UIntsToLong(uint a, uint b)
         {
-            return ((ulong)a << 32) | (ulong)b;
+            return (ulong)(a << 32) | (b & 0xFFFFFFFF);
         }
 
         /// <summary>
