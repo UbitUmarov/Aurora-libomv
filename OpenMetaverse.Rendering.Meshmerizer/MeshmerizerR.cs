@@ -366,8 +366,19 @@ namespace OpenMetaverse.Rendering
                 float repeatV = teFace.RepeatV;
                 if (teFace.TexMapType == MappingType.Planar)
                 {
-                    repeatU = (teFace.RepeatU * 2) * primScale.X;
-                    repeatV = (teFace.RepeatV * 2) * primScale.Y;
+                    Vector3 scale = primScale;
+                    Vector3 normal = vert.Normal;
+                    //Dunno...
+                    if(normal.X < 0)
+                        normal.X *= -1;
+                    if (normal.Y < 0)
+                        normal.Y *= -1;
+                    //Get the diff between the normal and the 'up', then fix the scale
+                    Quaternion rot = Vector3.RotationBetween (new Vector3 (0, 0, 1), normal);
+                    scale *= rot;
+                    //Viewer sends /2 appearently
+                    repeatU = (teFace.RepeatU * 2) * (scale.Y);
+                    repeatV = (teFace.RepeatV * 2) * (scale.X);
                 }
                 // rotate, scale, offset
                 vert.TexCoord.X = (tX * cosineAngle + tY * sinAngle) * repeatU + teFace.OffsetU + 0.5f;
