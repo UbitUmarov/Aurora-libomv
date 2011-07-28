@@ -347,7 +347,7 @@ namespace OpenMetaverse.Rendering
         /// <param name="vertices">Vertex list to modify texture coordinates for</param>
         /// <param name="center">Center-point of the face</param>
         /// <param name="teFace">Face texture parameters</param>
-        public void TransformTexCoords(List<OMVR.Vertex> vertices, OMV.Vector3 center, OMV.Primitive.TextureEntryFace teFace)
+        public void TransformTexCoords (List<OMVR.Vertex> vertices, OMV.Vector3 center, OMV.Primitive.TextureEntryFace teFace, Vector3 primScale)
         {
             // compute trig stuff up front
             float cosineAngle = (float)Math.Cos(teFace.Rotation);
@@ -362,9 +362,16 @@ namespace OpenMetaverse.Rendering
                 OMVR.Vertex vert = vertices[ii];
                 float tX = vert.TexCoord.X - 0.5f;
                 float tY = vert.TexCoord.Y - 0.5f;
+                float repeatU = teFace.RepeatU;
+                float repeatV = teFace.RepeatV;
+                if (teFace.TexMapType == MappingType.Planar)
+                {
+                    repeatU = (teFace.RepeatU * 2) * primScale.X;
+                    repeatV = (teFace.RepeatV * 2) * primScale.Y;
+                }
                 // rotate, scale, offset
-                vert.TexCoord.X = (tX * cosineAngle + tY * sinAngle) * teFace.RepeatU + teFace.OffsetU + 0.5f;
-                vert.TexCoord.Y = (-tX * sinAngle + tY * cosineAngle) * teFace.RepeatV + teFace.OffsetV + 0.5f;
+                vert.TexCoord.X = (tX * cosineAngle + tY * sinAngle) * repeatU + teFace.OffsetU + 0.5f;
+                vert.TexCoord.Y = (-tX * sinAngle + tY * cosineAngle) * repeatV + teFace.OffsetV + 0.5f;
                 vertices[ii] = vert;
             }
             return;
