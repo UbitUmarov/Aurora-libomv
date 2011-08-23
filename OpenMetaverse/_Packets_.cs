@@ -67185,6 +67185,8 @@ namespace OpenMetaverse.Packets
         {
             public ushort X;
             public ushort Y;
+            public ushort SizeX;
+            public ushort SizeY;
             public byte[] Name;
             public byte Access;
             public uint RegionFlags;
@@ -67196,7 +67198,7 @@ namespace OpenMetaverse.Packets
             {
                 get
                 {
-                    int length = 28;
+                    int length = 32;
                     if (Name != null) { length += Name.Length; }
                     return length;
                 }
@@ -67222,7 +67224,13 @@ namespace OpenMetaverse.Packets
                     RegionFlags = (uint)(bytes[i++] + (bytes[i++] << 8) + (bytes[i++] << 16) + (bytes[i++] << 24));
                     WaterHeight = (byte)bytes[i++];
                     Agents = (byte)bytes[i++];
-                    MapImageID.FromBytes(bytes, i); i += 16;
+                    MapImageID.FromBytes(bytes, i);
+                    i += 16;
+                    if(bytes.Length <= i + 4)
+                    {
+                        SizeX = (ushort)(bytes[i++] + (bytes[i++] << 8));
+                        SizeY = (ushort)(bytes[i++] + (bytes[i++] << 8));
+                    }
                 }
                 catch (Exception)
                 {
@@ -67242,7 +67250,12 @@ namespace OpenMetaverse.Packets
                 Utils.UIntToBytes(RegionFlags, bytes, i); i += 4;
                 bytes[i++] = WaterHeight;
                 bytes[i++] = Agents;
-                MapImageID.ToBytes(bytes, i); i += 16;
+                MapImageID.ToBytes(bytes, i);
+                i += 16;
+                bytes[i++] = (byte)(SizeX % 256);
+                bytes[i++] = (byte)((SizeX >> 8) % 256);
+                bytes[i++] = (byte)(SizeY % 256);
+                bytes[i++] = (byte)((SizeY >> 8) % 256);
             }
 
         }
