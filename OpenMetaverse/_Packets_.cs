@@ -67180,54 +67180,11 @@ namespace OpenMetaverse.Packets
 
         }
 
-        public sealed class SizeBlock : PacketBlock
-        {
-            public ushort SizeX;
-            public ushort SizeY;
-
-            public override int Length
-            {
-                get
-                {
-                    return 4;
-                }
-            }
-
-            public SizeBlock () { }
-            public SizeBlock(byte[] bytes, ref int i)
-            {
-                FromBytes(bytes, ref i);
-            }
-
-            public override void FromBytes(byte[] bytes, ref int i)
-            {
-                try
-                {
-                    SizeX = (ushort)(bytes[i++] + (bytes[i++] << 8));
-                    SizeY = (ushort)(bytes[i++] + (bytes[i++] << 8));
-                }
-                catch (Exception)
-                {
-                    throw new MalformedDataException();
-                }
-            }
-
-            public override void ToBytes(byte[] bytes, ref int i)
-            {
-                bytes[i++] = (byte)(SizeX % 256);
-                bytes[i++] = (byte)((SizeX >> 8) % 256);
-                bytes[i++] = (byte)(SizeY % 256);
-                bytes[i++] = (byte)((SizeY >> 8) % 256);
-            }
-        }
-
         /// <exclude/>
         public sealed class DataBlock : PacketBlock
         {
             public ushort X;
             public ushort Y;
-            public ushort SizeX;
-            public ushort SizeY;
             public byte[] Name;
             public byte Access;
             public uint RegionFlags;
@@ -67265,13 +67222,7 @@ namespace OpenMetaverse.Packets
                     RegionFlags = (uint)(bytes[i++] + (bytes[i++] << 8) + (bytes[i++] << 16) + (bytes[i++] << 24));
                     WaterHeight = (byte)bytes[i++];
                     Agents = (byte)bytes[i++];
-                    MapImageID.FromBytes(bytes, i);
-                    i += 16;
-                    if(bytes.Length <= i + 4)
-                    {
-                        SizeX = (ushort)(bytes[i++] + (bytes[i++] << 8));
-                        SizeY = (ushort)(bytes[i++] + (bytes[i++] << 8));
-                    }
+                    MapImageID.FromBytes(bytes, i); i += 16;
                 }
                 catch (Exception)
                 {
@@ -67291,8 +67242,46 @@ namespace OpenMetaverse.Packets
                 Utils.UIntToBytes(RegionFlags, bytes, i); i += 4;
                 bytes[i++] = WaterHeight;
                 bytes[i++] = Agents;
-                MapImageID.ToBytes(bytes, i);
-                i += 16;
+                MapImageID.ToBytes(bytes, i); i += 16;
+            }
+
+        }
+
+        /// <exclude/>
+        public sealed class SizeBlock : PacketBlock
+        {
+            public ushort SizeX;
+            public ushort SizeY;
+
+            public override int Length
+            {
+                get
+                {
+                    return 4;
+                }
+            }
+
+            public SizeBlock() { }
+            public SizeBlock(byte[] bytes, ref int i)
+            {
+                FromBytes(bytes, ref i);
+            }
+
+            public override void FromBytes(byte[] bytes, ref int i)
+            {
+                try
+                {
+                    SizeX = (ushort)(bytes[i++] + (bytes[i++] << 8));
+                    SizeY = (ushort)(bytes[i++] + (bytes[i++] << 8));
+                }
+                catch (Exception)
+                {
+                    throw new MalformedDataException();
+                }
+            }
+
+            public override void ToBytes(byte[] bytes, ref int i)
+            {
                 bytes[i++] = (byte)(SizeX % 256);
                 bytes[i++] = (byte)((SizeX >> 8) % 256);
                 bytes[i++] = (byte)(SizeY % 256);
@@ -67305,10 +67294,12 @@ namespace OpenMetaverse.Packets
         {
             get
             {
-                int length = 11;
+                int length = 12;
                 length += AgentData.Length;
                 for (int j = 0; j < Data.Length; j++)
                     length += Data[j].Length;
+                for (int j = 0; j < Size.Length; j++)
+                    length += Size[j].Length;
                 return length;
             }
         }
@@ -67352,13 +67343,13 @@ namespace OpenMetaverse.Packets
             }
             for (int j = 0; j < count; j++)
             { Data[j].FromBytes(bytes, ref i); }
-            if(Size == null || Size.Length != -1)
-            {
+            count = (int)bytes[i++];
+            if(Size == null || Size.Length != -1) {
                 Size = new SizeBlock[count];
                 for(int j = 0; j < count; j++)
                 { Size[j] = new SizeBlock(); }
             }
-            for(int j = 0; j < count; j++)
+            for (int j = 0; j < count; j++)
             { Size[j].FromBytes(bytes, ref i); }
         }
 
@@ -67380,13 +67371,13 @@ namespace OpenMetaverse.Packets
             }
             for (int j = 0; j < count; j++)
             { Data[j].FromBytes(bytes, ref i); }
-            if(Size == null || Size.Length != count)
-            {
+            count = (int)bytes[i++];
+            if(Size == null || Size.Length != count) {
                 Size = new SizeBlock[count];
                 for(int j = 0; j < count; j++)
                 { Size[j] = new SizeBlock(); }
             }
-            for(int j = 0; j < count; j++)
+            for (int j = 0; j < count; j++)
             { Size[j].FromBytes(bytes, ref i); }
         }
 
@@ -67396,14 +67387,17 @@ namespace OpenMetaverse.Packets
             length += AgentData.Length;
             length++;
             for (int j = 0; j < Data.Length; j++) { length += Data[j].Length; }
+            length++;
+            for (int j = 0; j < Size.Length; j++) { length += Size[j].Length; }
             if (Header.AckList != null && Header.AckList.Length > 0) { length += Header.AckList.Length * 4 + 1; }
             byte[] bytes = new byte[length];
             int i = 0;
             Header.ToBytes(bytes, ref i);
             AgentData.ToBytes(bytes, ref i);
             bytes[i++] = (byte)Data.Length;
-            for(int j = 0; j < Data.Length; j++) { Data[j].ToBytes(bytes, ref i); }
-            for(int j = 0; j < Size.Length; j++) { Size[j].ToBytes(bytes, ref i); }
+            for (int j = 0; j < Data.Length; j++) { Data[j].ToBytes(bytes, ref i); }
+            bytes[i++] = (byte)Size.Length;
+            for (int j = 0; j < Size.Length; j++) { Size[j].ToBytes(bytes, ref i); }
             if (Header.AckList != null && Header.AckList.Length > 0) { Header.AcksToBytes(bytes, ref i); }
             return bytes;
         }
@@ -67426,22 +67420,33 @@ namespace OpenMetaverse.Packets
             byte[] fixedBytes = new byte[fixedLength];
             Header.ToBytes(fixedBytes, ref i);
             AgentData.ToBytes(fixedBytes, ref i);
-            fixedLength += 1;
+            fixedLength += 2;
 
             int DataStart = 0;
+            int SizeStart = 0;
             do
             {
                 int variableLength = 0;
                 int DataCount = 0;
+                int SizeCount = 0;
 
                 i = DataStart;
-                while(fixedLength + variableLength + acksLength < Packet.MTU && i < Data.Length)
-                {
+                while (fixedLength + variableLength + acksLength < Packet.MTU && i < Data.Length) {
                     int blockLength = Data[i].Length;
-                    if(fixedLength + variableLength + blockLength + acksLength <= MTU)
-                    {
+                    if (fixedLength + variableLength + blockLength + acksLength <= MTU) {
                         variableLength += blockLength;
                         ++DataCount;
+                    }
+                    else { break; }
+                    ++i;
+                }
+
+                i = SizeStart;
+                while (fixedLength + variableLength + acksLength < Packet.MTU && i < Size.Length) {
+                    int blockLength = Size[i].Length;
+                    if (fixedLength + variableLength + blockLength + acksLength <= MTU) {
+                        variableLength += blockLength;
+                        ++SizeCount;
                     }
                     else { break; }
                     ++i;
@@ -67450,58 +67455,25 @@ namespace OpenMetaverse.Packets
                 byte[] packet = new byte[fixedLength + variableLength + acksLength];
                 int length = fixedBytes.Length;
                 Buffer.BlockCopy(fixedBytes, 0, packet, 0, length);
-                if(packets.Count > 0) { packet[0] = (byte)(packet[0] & ~0x10); }
+                if (packets.Count > 0) { packet[0] = (byte)(packet[0] & ~0x10); }
 
                 packet[length++] = (byte)DataCount;
-                for(i = DataStart; i < DataStart + DataCount; i++) { Data[i].ToBytes(packet, ref length); }
+                for (i = DataStart; i < DataStart + DataCount; i++) { Data[i].ToBytes(packet, ref length); }
                 DataStart += DataCount;
 
-                if(acksLength > 0)
-                {
+                packet[length++] = (byte)SizeCount;
+                for (i = SizeStart; i < SizeStart + SizeCount; i++) { Size[i].ToBytes(packet, ref length); }
+                SizeStart += SizeCount;
+
+                if (acksLength > 0) {
                     Buffer.BlockCopy(ackBytes, 0, packet, length, acksLength);
                     acksLength = 0;
                 }
 
                 packets.Add(packet);
-            } while(
-                DataStart < Data.Length);
-            DataStart = 0;
-            do
-            {
-                int variableLength = 0;
-                int DataCount = 0;
-
-                i = DataStart;
-                while(fixedLength + variableLength + acksLength < Packet.MTU && i < Data.Length)
-                {
-                    int blockLength = Data[i].Length;
-                    if(fixedLength + variableLength + blockLength + acksLength <= MTU)
-                    {
-                        variableLength += blockLength;
-                        ++DataCount;
-                    }
-                    else { break; }
-                    ++i;
-                }
-
-                byte[] packet = new byte[fixedLength + variableLength + acksLength];
-                int length = fixedBytes.Length;
-                Buffer.BlockCopy(fixedBytes, 0, packet, 0, length);
-                if(packets.Count > 0) { packet[0] = (byte)(packet[0] & ~0x10); }
-
-                packet[length++] = (byte)DataCount;
-                for(i = DataStart; i < DataStart + DataCount; i++) { Size[i].ToBytes(packet, ref length); }
-                DataStart += DataCount;
-
-                if(acksLength > 0)
-                {
-                    Buffer.BlockCopy(ackBytes, 0, packet, length, acksLength);
-                    acksLength = 0;
-                }
-
-                packets.Add(packet);
-            } while(
-                DataStart < Size.Length);
+            } while (
+                DataStart < Data.Length ||
+                SizeStart < Size.Length);
 
             return packets.ToArray();
         }
