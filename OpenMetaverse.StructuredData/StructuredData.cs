@@ -769,10 +769,10 @@ namespace OpenMetaverse.StructuredData
         {
             this.value = new byte[]
             {
-                (byte)((value >> 24) % 256),
-                (byte)((value >> 16) % 256),
-                (byte)((value >> 8) % 256),
-                (byte)(value % 256)
+                (byte)((value >> 24)),
+                (byte)((value >> 16)),
+                (byte)((value >> 8)),
+                (byte)(value)
             };
         }
 
@@ -780,14 +780,14 @@ namespace OpenMetaverse.StructuredData
         {
             this.value = new byte[]
             {
-                (byte)((value >> 56) % 256),
-                (byte)((value >> 48) % 256),
-                (byte)((value >> 40) % 256),
-                (byte)((value >> 32) % 256),
-                (byte)((value >> 24) % 256),
-                (byte)((value >> 16) % 256),
-                (byte)((value >> 8) % 256),
-                (byte)(value % 256)
+      (byte)((value >> 56)),
+                (byte)((value >> 48)),
+                (byte)((value >> 40)),
+                (byte)((value >> 32)),
+                (byte)((value >> 24)),
+                (byte)((value >> 16)),
+                (byte)((value >> 8)),
+                (byte)(value)
             };
         }
 
@@ -795,14 +795,14 @@ namespace OpenMetaverse.StructuredData
         {
             this.value = new byte[]
             {
-                (byte)((value >> 56) % 256),
-                (byte)((value >> 48) % 256),
-                (byte)((value >> 40) % 256),
-                (byte)((value >> 32) % 256),
-                (byte)((value >> 24) % 256),
-                (byte)((value >> 16) % 256),
-                (byte)((value >> 8) % 256),
-                (byte)(value % 256)
+     (byte)((value >> 56)),
+                (byte)((value >> 48)),
+                (byte)((value >> 40)),
+                (byte)((value >> 32)),
+                (byte)((value >> 24)),
+                (byte)((value >> 16)),
+                (byte)((value >> 8)),
+                (byte)(value)
             };
         }
 
