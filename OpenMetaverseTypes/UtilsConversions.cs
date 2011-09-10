@@ -28,11 +28,17 @@ using System;
 using System.Net;
 using System.Text;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace OpenMetaverse
 {
     public static partial class Utils
     {
+
+	
+	public static bool weAreLittleEndian = BitConverter.IsLittleEndian;
+
+	
         #region String Arrays
 
         private static readonly string[] _AssetTypeNames = new string[]
@@ -180,7 +186,7 @@ namespace OpenMetaverse
         /// read at the given position</returns>
         public static short BytesToInt16(byte[] bytes)
         {
-            return BytesToInt16(bytes, 0);
+            return (short)(bytes[0] + (bytes[1] << 8));
         }
 
         /// <summary>
@@ -208,7 +214,18 @@ namespace OpenMetaverse
         public static int BytesToInt(byte[] bytes, int pos)
         {
             if (bytes.Length < pos + 4) return 0;
-            return (int)(bytes[pos + 0] + (bytes[pos + 1] << 8) + (bytes[pos + 2] << 16) + (bytes[pos + 3] << 24));
+            if (weAreLittleEndian)
+                {
+                unsafe
+                    {
+                    fixed (byte* b = &bytes[pos])
+                        {
+                        return (int)*b;
+                        }
+                    }
+                }
+            else
+                return (int)(bytes[pos + 0] + (bytes[pos + 1] << 8) + (bytes[pos + 2] << 16) + (bytes[pos + 3] << 24));
         }
 
         /// <summary>
@@ -220,7 +237,18 @@ namespace OpenMetaverse
         /// less than four bytes</returns>
         public static int BytesToInt(byte[] bytes)
         {
-            return BytesToInt(bytes, 0);
+            if (weAreLittleEndian)
+                {
+                unsafe
+                    {
+                    fixed (byte* b = &bytes[0])
+                        {
+                        return (int)*b;
+                        }
+                    }
+                }
+            else
+                return (int)(bytes[0] + (bytes[1] << 8) + (bytes[2] << 16) + (bytes[3] << 24));
         }
 
         /// <summary>
@@ -232,7 +260,26 @@ namespace OpenMetaverse
         /// less than eight bytes</returns>
         public static long BytesToInt64(byte[] bytes)
         {
-            return BytesToInt64(bytes, 0);
+        if (weAreLittleEndian)
+            {
+            unsafe
+                {
+                fixed (byte* b = &bytes[0])
+                    {
+                    return (long)*b;
+                    }
+                }
+            }
+        else
+            return (long)
+                    ((long)bytes[0] +
+                    ((long)bytes[1] << 8) +
+                    ((long)bytes[2] << 16) +
+                    ((long)bytes[3] << 24) +
+                    ((long)bytes[4] << 32) +
+                    ((long)bytes[5] << 40) +
+                    ((long)bytes[6] << 48) +
+                    ((long)bytes[7] << 56));
         }
 
         /// <summary>
@@ -246,6 +293,17 @@ namespace OpenMetaverse
         public static long BytesToInt64(byte[] bytes, int pos)
         {
             if (bytes.Length < pos + 8) return 0;
+            if (weAreLittleEndian)
+                {
+                unsafe
+                    {
+                    fixed (byte* b = &bytes[pos])
+                        {
+                        return (long)*b;
+                        }
+                    }
+                }
+            else
             return (long)
                 ((long)bytes[pos + 0] +
                 ((long)bytes[pos + 1] << 8) +
@@ -293,7 +351,10 @@ namespace OpenMetaverse
         public static uint BytesToUInt(byte[] bytes, int pos)
         {
             if (bytes.Length < pos + 4) return 0;
-            return (uint)(bytes[pos + 0] + (bytes[pos + 1] << 8) + (bytes[pos + 2] << 16) + (bytes[pos + 3] << 24));
+            if (weAreLittleEndian)
+                return BitConverter.ToUInt32(bytes, pos);
+            else
+				return (uint)(bytes[pos + 0] + (bytes[pos + 1] << 8) + (bytes[pos + 2] << 16) + (bytes[pos + 3] << 24));
         }
 
         /// <summary>
@@ -305,7 +366,10 @@ namespace OpenMetaverse
         /// less than four bytes</returns>
         public static uint BytesToUInt(byte[] bytes)
         {
-            return BytesToUInt(bytes, 0);
+            if (weAreLittleEndian)
+                return BitConverter.ToUInt32(bytes, 0);
+            else
+				return BytesToUInt(bytes, 0);
         }
 
         /// <summary>
@@ -318,15 +382,18 @@ namespace OpenMetaverse
         public static ulong BytesToUInt64(byte[] bytes)
         {
             if (bytes.Length < 8) return 0;
-            return (ulong)
-                ((ulong)bytes[0] +
-                ((ulong)bytes[1] << 8) +
-                ((ulong)bytes[2] << 16) +
-                ((ulong)bytes[3] << 24) +
-                ((ulong)bytes[4] << 32) +
-                ((ulong)bytes[5] << 40) +
-                ((ulong)bytes[6] << 48) +
-                ((ulong)bytes[7] << 56));
+            if (weAreLittleEndian)
+                return BitConverter.ToUInt64(bytes, 0);
+            else
+				return (ulong)
+					((ulong)bytes[0] +
+					((ulong)bytes[1] << 8) +
+					((ulong)bytes[2] << 16) +
+					((ulong)bytes[3] << 24) +
+					((ulong)bytes[4] << 32) +
+					((ulong)bytes[5] << 40) +
+					((ulong)bytes[6] << 48) +
+					((ulong)bytes[7] << 56));
         }
 
         /// <summary>
@@ -340,32 +407,28 @@ namespace OpenMetaverse
         /// <returns>Single precision value</returns>
         public static float BytesToFloat(byte[] bytes, int pos)
         {
-            if (!BitConverter.IsLittleEndian)
-            {
+            if (weAreLittleEndian)
+            return BitConverter.ToSingle(bytes, pos);
+            else
+                {
                 byte[] newBytes = new byte[4];
                 Buffer.BlockCopy(bytes, pos, newBytes, 0, 4);
                 Array.Reverse(newBytes, 0, 4);
                 return BitConverter.ToSingle(newBytes, 0);
-            }
-            else
-            {
-                return BitConverter.ToSingle(bytes, pos);
-            }
+                }
         }
 
         public static double BytesToDouble(byte[] bytes, int pos)
         {
-            if (!BitConverter.IsLittleEndian)
-            {
+            if (weAreLittleEndian)
+                return BitConverter.ToDouble(bytes, pos);
+            else
+                {
                 byte[] newBytes = new byte[8];
                 Buffer.BlockCopy(bytes, pos, newBytes, 0, 8);
                 Array.Reverse(newBytes, 0, 8);
                 return BitConverter.ToDouble(newBytes, 0);
-            }
-            else
-            {
-                return BitConverter.ToDouble(bytes, pos);
-            }
+                }
         }
 
         #endregion BytesTo
@@ -375,35 +438,35 @@ namespace OpenMetaverse
         public static byte[] Int16ToBytes(short value)
         {
             byte[] bytes = new byte[2];
-            bytes[0] = (byte)(value % 256);
-            bytes[1] = (byte)((value >> 8) % 256);
+            bytes[0] = (byte)(value);
+            bytes[1] = (byte)((value >> 8));
             return bytes;
         }
 
         public static void Int16ToBytes(short value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)(value % 256);
-            dest[pos + 1] = (byte)((value >> 8) % 256);
+            dest[pos] = (byte)(value);
+            dest[pos + 1] = (byte)((value >> 8));
         }
 
         public static byte[] UInt16ToBytes(ushort value)
         {
             byte[] bytes = new byte[2];
-            bytes[0] = (byte)(value % 256);
-            bytes[1] = (byte)((value >> 8) % 256);
+            bytes[0] = (byte)(value);
+            bytes[1] = (byte)((value >> 8));
             return bytes;
         }
 
         public static void UInt16ToBytes(ushort value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)(value % 256);
-            dest[pos + 1] = (byte)((value >> 8) % 256);
+            dest[pos] = (byte)(value);
+            dest[pos + 1] = (byte)((value >> 8));
         }
 
         public static void UInt16ToBytesBig(ushort value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)((value >> 8) % 256);
-            dest[pos + 1] = (byte)(value % 256);
+            dest[pos] = (byte)((value >> 8));
+            dest[pos + 1] = (byte)(value);
         }
 
         /// <summary>
@@ -413,14 +476,18 @@ namespace OpenMetaverse
         /// <returns>A four byte little endian array</returns>
         public static byte[] IntToBytes(int value)
         {
-            byte[] bytes = new byte[4];
+            if (weAreLittleEndian)
+                return BitConverter.GetBytes(value);
+            else
+                {
+                byte[] bytes = new byte[4];
 
-            bytes[0] = (byte)(value % 256);
-            bytes[1] = (byte)((value >> 8) % 256);
-            bytes[2] = (byte)((value >> 16) % 256);
-            bytes[3] = (byte)((value >> 24) % 256);
-
-            return bytes;
+                bytes[0] = (byte)(value);
+                bytes[1] = (byte)((value >> 8));
+                bytes[2] = (byte)((value >> 16));
+                bytes[3] = (byte)((value >> 24));
+                return bytes;
+                }
         }
 
         /// <summary>
@@ -432,46 +499,46 @@ namespace OpenMetaverse
         {
             byte[] bytes = new byte[4];
 
-            bytes[0] = (byte)((value >> 24) % 256);
-            bytes[1] = (byte)((value >> 16) % 256);
-            bytes[2] = (byte)((value >> 8) % 256);
-            bytes[3] = (byte)(value % 256);
+            bytes[0] = (byte)((value >> 24));
+            bytes[1] = (byte)((value >> 16));
+            bytes[2] = (byte)((value >> 8));
+            bytes[3] = (byte)(value);
 
             return bytes;
         }
 
         public static void IntToBytes(int value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)(value % 256);
-            dest[pos + 1] = (byte)((value >> 8) % 256);
-            dest[pos + 2] = (byte)((value >> 16) % 256);
-            dest[pos + 3] = (byte)((value >> 24) % 256);
+            dest[pos] = (byte)(value);
+            dest[pos + 1] = (byte)((value >> 8));
+            dest[pos + 2] = (byte)((value >> 16));
+            dest[pos + 3] = (byte)((value >> 24));
         }
 
         public static byte[] UIntToBytes(uint value)
         {
             byte[] bytes = new byte[4];
-            bytes[0] = (byte)(value % 256);
-            bytes[1] = (byte)((value >> 8) % 256);
-            bytes[2] = (byte)((value >> 16) % 256);
-            bytes[3] = (byte)((value >> 24) % 256);
+            bytes[0] = (byte)(value);
+            bytes[1] = (byte)((value >> 8));
+            bytes[2] = (byte)((value >> 16));
+            bytes[3] = (byte)((value >> 24));
             return bytes;
         }
 
         public static void UIntToBytes(uint value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)(value % 256);
-            dest[pos + 1] = (byte)((value >> 8) % 256);
-            dest[pos + 2] = (byte)((value >> 16) % 256);
-            dest[pos + 3] = (byte)((value >> 24) % 256);
+            dest[pos] = (byte)(value);
+            dest[pos + 1] = (byte)((value >> 8));
+            dest[pos + 2] = (byte)((value >> 16));
+            dest[pos + 3] = (byte)((value >> 24));
         }
 
         public static void UIntToBytesBig(uint value, byte[] dest, int pos)
         {
-            dest[pos] = (byte)((value >> 24) % 256);
-            dest[pos + 1] = (byte)((value >> 16) % 256);
-            dest[pos + 2] = (byte)((value >> 8) % 256);
-            dest[pos + 3] = (byte)(value % 256);
+            dest[pos] = (byte)((value >> 24));
+            dest[pos + 1] = (byte)((value >> 16));
+            dest[pos + 2] = (byte)((value >> 8));
+            dest[pos + 3] = (byte)(value);
         }
 
         /// <summary>
