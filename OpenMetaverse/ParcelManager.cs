@@ -1471,7 +1471,7 @@ namespace OpenMetaverse
         /// <param name="selectType">Owners, Others, Etc</param>
         /// <param name="ownerID">List containing keys of avatars objects to select; 
         /// if List is null will return Objects of type <c>selectType</c></param>
-        /// <remarks>Response data is returned in the event <seealso cref="E:OnParcelSelectedObjects"/></remarks>
+        /// <remarks>Response data is returned in the event <seealso cref="E:ForceSelectObjectsReply"/></remarks>
         public void RequestSelectObjects(int localID, ObjectReturnType selectType, UUID ownerID)
         {
             ParcelSelectObjectsPacket select = new ParcelSelectObjectsPacket();
@@ -1546,6 +1546,9 @@ namespace OpenMetaverse
         /// <returns>If successful UUID of the remote parcel, UUID.Zero otherwise</returns>
         public UUID RequestRemoteParcelID(Vector3 location, ulong regionHandle, UUID regionID)
         {
+            if (Client.Network.CurrentSim == null || Client.Network.CurrentSim.Caps == null)
+                return UUID.Zero;
+
             Uri url = Client.Network.CurrentSim.Caps.CapabilityURI("RemoteParcelRequest");
 
             if (url != null)
