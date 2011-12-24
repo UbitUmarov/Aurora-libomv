@@ -149,7 +149,7 @@ namespace OpenMetaverse.Rendering
             omvrmesh.Path = new OMVR.Path();
             omvrmesh.Path.Points = new List<OMVR.PathPoint>();
 
-            Dictionary<OMV.Vector3, ushort> vertexAccount = new Dictionary<OMV.Vector3, ushort>();
+            Dictionary<OMV.Vector3, int> vertexAccount = new Dictionary<OMV.Vector3, int>();
             for (int ii = 0; ii < numPrimFaces; ii++)
             {
                 OMVR.Face oface = new OMVR.Face();
@@ -157,8 +157,9 @@ namespace OpenMetaverse.Rendering
                 oface.Indices = new List<ushort>();
                 oface.TextureFace = prim.Textures.GetFace((uint)ii);
                 int faceVertices = 0;
+                vertexAccount.Clear();
                 OMV.Vector3 pos;
-                ushort indx;
+                int indx;
                 OMVR.Vertex vert;
                 foreach (PrimMesher.ViewerFace vface in newPrim.viewerFaces)
                 {
@@ -166,10 +167,10 @@ namespace OpenMetaverse.Rendering
                     {
                         faceVertices++;
                         pos = new OMV.Vector3(vface.v1.X, vface.v1.Y, vface.v1.Z);
-                        if(vertexAccount.TryGetValue(pos, out indx))
+                        if (vertexAccount.ContainsKey(pos))
                         {
                             // we aleady have this vertex in the list. Just point the index at it
-                            oface.Indices.Add(indx);
+                            oface.Indices.Add((ushort)vertexAccount[pos]);
                         }
                         else
                         {
@@ -179,15 +180,15 @@ namespace OpenMetaverse.Rendering
                             vert.TexCoord = new OMV.Vector2(vface.uv1.U, 1.0f - vface.uv1.V);
                             vert.Normal = new OMV.Vector3(vface.n1.X, vface.n1.Y, vface.n1.Z);
                             oface.Vertices.Add(vert);
-                            indx = (ushort)(oface.Vertices.Count - 1);
+                            indx = oface.Vertices.Count - 1;
                             vertexAccount.Add(pos, indx);
-                            oface.Indices.Add(indx);
+                            oface.Indices.Add((ushort)indx);
                         }
 
                         pos = new OMV.Vector3(vface.v2.X, vface.v2.Y, vface.v2.Z);
-                        if(vertexAccount.TryGetValue(pos, out indx))
+                        if (vertexAccount.ContainsKey(pos))
                         {
-                            oface.Indices.Add(indx);
+                            oface.Indices.Add((ushort)vertexAccount[pos]);
                         }
                         else
                         {
@@ -196,15 +197,15 @@ namespace OpenMetaverse.Rendering
                             vert.TexCoord = new OMV.Vector2(vface.uv2.U, 1.0f - vface.uv2.V);
                             vert.Normal = new OMV.Vector3(vface.n2.X, vface.n2.Y, vface.n2.Z);
                             oface.Vertices.Add(vert);
-                            indx = (ushort)(oface.Vertices.Count - 1);
+                            indx = oface.Vertices.Count - 1;
                             vertexAccount.Add(pos, indx);
-                            oface.Indices.Add(indx);
+                            oface.Indices.Add((ushort)indx);
                         }
 
                         pos = new OMV.Vector3(vface.v3.X, vface.v3.Y, vface.v3.Z);
-                        if(vertexAccount.TryGetValue(pos, out indx))
+                        if (vertexAccount.ContainsKey(pos))
                         {
-                            oface.Indices.Add(indx);
+                            oface.Indices.Add((ushort)vertexAccount[pos]);
                         }
                         else
                         {
@@ -213,9 +214,9 @@ namespace OpenMetaverse.Rendering
                             vert.TexCoord = new OMV.Vector2(vface.uv3.U, 1.0f - vface.uv3.V);
                             vert.Normal = new OMV.Vector3(vface.n3.X, vface.n3.Y, vface.n3.Z);
                             oface.Vertices.Add(vert);
-                            indx = (ushort)(oface.Vertices.Count - 1);
+                            indx = oface.Vertices.Count - 1;
                             vertexAccount.Add(pos, indx);
-                            oface.Indices.Add(indx);
+                            oface.Indices.Add((ushort)indx);
                         }
                     }
                 }
@@ -375,7 +376,7 @@ namespace OpenMetaverse.Rendering
                     vert.TexCoord.X = 1f + (Vector3.Dot(binormal, scaledPos) * 2f - 0.5f);
                     vert.TexCoord.Y = -(Vector3.Dot(tangent, scaledPos) * 2f - 0.5f);
                 }
-                
+
                 float repeatU = teFace.RepeatU;
                 float repeatV = teFace.RepeatV;
                 float tX = vert.TexCoord.X - 0.5f;
